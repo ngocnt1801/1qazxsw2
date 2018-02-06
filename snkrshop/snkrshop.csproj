@@ -92,11 +92,20 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Deal.cs" />
     <Compile Include="Models\Guest.cs" />
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
+    <Compile Include="Models\OrderVoucher.cs" />
+    <Compile Include="Models\Post.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductDeal.cs" />
+    <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Voucher.cs" />
+    <Compile Include="Models\VoucherProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
