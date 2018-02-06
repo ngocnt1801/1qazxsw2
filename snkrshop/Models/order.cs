@@ -5,7 +5,7 @@ using System.Web;
 
 namespace snkrshop.Models
 {
-    public class order
+    public class Order
     {
         public int OrderId { get; set; }
         public DateTime OrderDate { get; set; }
