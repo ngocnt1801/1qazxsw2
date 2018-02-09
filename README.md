@@ -1,10 +1,8 @@
+<<<<<<< .mine
 # 1qazxsw2
-﻿*************************
-*	QUAN: x		*
-*	NGOC: o		*
-*************************
-
-
+**************
+	QUAN: x		
+	NGOC: o		
 Role
 	GetAllRole	x
 Image 
@@ -63,3 +61,4 @@ Voucher
 	Update voucher		x
 	Get all voucher are activity	o
 Get all voucher x
+
