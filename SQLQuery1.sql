@@ -19,3 +19,24 @@ AS
 	Insert Into dbo.tbl_user ([userId],[password],[email],[fullname],[address],[phone],[gender],[role],[date_reg])
 	values (@UserName,  @UserPassword, @UserEmail, @FullName, @Address, @Phone, @Gender, @Role, GETDATE());
 GO
+
+
+---use LoginDB------
+
+Create Procedure getInfo3
+@username varchar(50),
+@password varchar(50) OUTPUT
+as
+	select @password = password from tbl_users where username = @username
+
+go
+/*run procedure*/
+getInfo
+
+------use output parameter---------------
+Declare @Pass varchar(50)
+execute getInfo3 'ngoc', @password = @Pass OUTPUT
+print 'Pass is ' + @Pass
+go
+
+
