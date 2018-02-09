@@ -1,4 +1,10 @@
-﻿Role
+﻿*************************
+*	QUAN: x		*
+*	NGOC: o		*
+*************************
+
+
+Role
 	GetAllRole	x
 Image 
 	GetImageOfProduct	o
