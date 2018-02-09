@@ -1,4 +1,4 @@
-CREATE TRIGGER trg_UpdateTimeAdd
+﻿CREATE TRIGGER trg_UpdateTimeAdd
 ON dbo.tbl_user
 AFTER UPDATE	
 AS
@@ -40,3 +40,27 @@ print 'Pass is ' + @Pass
 go
 
 
+--- không cần thiết phải làm trigger cho insert một dòng vào bảng order thì nó lấy ngày hiện tại
+-- chỉ cần để giá trị default của nó là GETDATE() là được 
+-- đã test cách này thành công
+
+create procedure insertOrder
+@user varchar(50),
+@orderId varchar(50),
+@totalAmount varchar(50)
+as
+	insert into tbl_order(username,orderID,totalAmount)
+	values(@user,@orderId,@totalAmount)
+go
+
+insertOrder 'ngoc','ngoc3',25
+
+create trigger insertNewOrder
+ON tbl_order
+after INSERT
+AS
+Begin
+	update tbl_order
+	set date = GETDATE()
+	where orderID = 
+end
