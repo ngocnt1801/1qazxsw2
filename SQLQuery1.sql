@@ -1,4 +1,7 @@
-﻿CREATE TRIGGER trg_UpdateTimeAdd
+﻿USE snkrkorea
+GO
+----------
+CREATE TRIGGER trg_UpdateTimeAdd
 ON dbo.tbl_user
 AFTER UPDATE	
 AS
@@ -64,3 +67,42 @@ Begin
 	set date = GETDATE()
 	where orderID = 
 end
+
+
+-----QUAN----------------------------------------------
+--GetAllRole
+SELECT name
+FROM tbl_role
+--GetImageOfPost
+CREATE PROCEDURE GetImageOfPost
+@postId int
+AS
+	SELECT url
+	FROM [tbl_image]
+	WHERE postId = @postId
+GO
+--DeleteImage
+CREATE PROCEDURE DeleteImage
+@imageId int
+AS
+	DELETE 
+	FROM [tbl_image]
+	WHERE imageId = @imageId
+GO
+--Get a Post by postID
+CREATE PROCEDURE GetPostById
+@Id int
+AS
+	SELECT * 
+	FROM [tbl_post]
+	WHERE postId = @Id
+GO
+--Delete Post 
+CREATE PROCEDURE DeletePost
+@Id int
+AS
+	DELETE 
+	FROM [tbl_post]
+	WHERE postId = @Id
+GO
+--Get all comment of post 
