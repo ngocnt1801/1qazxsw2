@@ -106,3 +106,11 @@ AS
 	WHERE postId = @Id
 GO
 --Get all comment of post 
+CREATE PROCEDURE GetPostComment
+@PostId int
+AS
+	SELECT *
+	FROM [tbl_comment]
+	WHERE postId = @PostId
+GO
+--
