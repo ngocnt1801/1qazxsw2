@@ -137,3 +137,205 @@ AS
 	SET	tbl_comment.title = ?, tbl_comment.commentContent= ? ,  tbl_comment.time=GETDATE()
 	WHERE id
 GO
+
+
+------------------NGOC -----------------
+--------------PROCEDURE-----------------
+----- get role name ---------
+select name
+from tbl_role
+where roleid = 1
+------ get image of product ------
+select url
+from tbl_image
+where productId = 1
+---------- add image ---------
+create procedure AddImageOfProduct
+@Url varchar(255),
+@ProductId int
+AS
+	INSERT INTO tbl_image(url, productId)
+	VALUES (@Url, @ProductId)
+GO
+
+create procedure AddImageOfPost
+@Url varchar(255),
+@PostId int
+AS
+	INSERT INTO tbl_image(url, postId)
+	VALUES (@Url, @PostId)
+GO
+
+--------- Update Post ------------
+create procedure UpdatePost
+@Title nvarchar(50),
+@Content nvarchar(MAX),
+@PostId int
+AS
+	UPDATE tbl_post
+	SET title = @Title, postContent = @Content
+	WHERE postId = @PostId
+GO
+
+--------- Add Post --------------
+create procedure AddPost
+@Title nvarchar(50),
+@Content nvarchar(MAX),
+@UserId varchar(50)
+AS
+	INSERT INTO tbl_post(title, postContent, timePost, userId)
+	VALUES(@Title, @Content, GETDATE(), @UserId)
+GO
+
+---------Add Comment -------------
+create procedure AddCommentOFProduct
+@Title nvarchar(50),
+@Content nvarchar(MAX),
+@ProductId int, 
+@AuthorId varchar(50)
+AS
+	INSERT INTO tbl_comment(title, commentContent, productId, time, authorId)
+	VALUES (@Title, @Content, @ProductId, GETDATE(), @AuthorId)
+GO
+
+create procedure AddCommentOFPost
+@Title nvarchar(50),
+@Content nvarchar(MAX),
+@PostId int, 
+@AuthorId varchar(50)
+AS
+	INSERT INTO tbl_comment(title, commentContent, postId, time, authorId)
+	VALUES (@Title, @Content, @PostId, GETDATE(), @AuthorId)
+GO
+
+create procedure ReplyComment
+@Title nvarchar(50),
+@Content nvarchar(MAX), 
+@ParentId int,
+@AuthorId varchar(50)
+AS
+	INSERT INTO tbl_comment(title, commentContent, parentId, time, authorId)
+	VALUES (@Title, @Content, @ParentId, GETDATE(), @AuthorId)
+GO
+
+-------- Add Account --------------
+create procedure AddAccount
+@UserId varchar(50),
+@Password varchar(50),
+@Email varchar(250),
+@Fullname varchar(50),
+@Address nvarchar(250),
+@Phone varchar(15),
+@Gender int, 
+@Role int
+AS
+	INSERT INTO tbl_user(userId, password, email, fullname, address, phone, gender, role, date_reg)
+	VALUES (@UserId, @Password, @Email, @Fullname, @Address, @Phone, @Gender, GETDATE())
+GO
+
+--------------Update Profile ---------------
+create procedure UpdateProfile
+@UserId varchar(50),
+@Password varchar(50),
+@Email varchar(250),
+@Fullname varchar(50),
+@Address nvarchar(250),
+@Phone varchar(15),
+@Gender int, 
+@Role int
+AS
+	UPDATE tbl_user
+	SET email = @Email, 
+		phone = @Phone, 
+		fullname = @Fullname, 
+		address = @Address, 
+		gender = @Gender
+	WHERE userId = @UserId
+GO
+
+create procedure ChangeRole
+@UserId varchar(50),
+@Role int
+AS
+	UPDATE tbl_user
+	SET role = @Role
+	WHERE role = @Role
+GO
+
+----------- delete product ------------
+create procedure DeleteProduct
+@ProductId int
+AS
+	DELETE 
+	FROM tbl_product
+	WHERE productId = @ProductId
+GO
+
+----------- update quantity product -----------
+create procedure UpdateQuantityProduct
+@ProductId int,
+@Quantity int
+AS
+	UPDATE tbl_product
+	SET quantity = @Quantity
+	WHERE productId = @ProductId
+GO
+------------ cancel order ---------------
+create procedure CancelOrder
+@OrderId int
+AS
+	UPDATE tbl_order
+	SET status =  5 --status Cancel -----
+	WHERE id = @OrderId
+GO
+
+---------- add deal for each product -------------
+create procedure AddDealForProduct
+@ProductId int,
+@Discount int,
+@Type bit
+AS
+	INSERT INTO tbl_product_deal(productId, discount, type)
+	VALUES (@ProductId, @Discount, @Type)
+GO
+
+------------ update deal --------------
+create procedure UpdateDealInformation
+@DealId int,
+@Content nvarchar(50),
+@StartTime datetime,
+@Duration int
+AS
+	UPDATE tbl_deal
+	SET dealContent = @Content, startTime = @StartTime, duration = @Duration
+	WHERE id = @DealId
+GO
+
+create procedure ChangeProductDiscount
+@DealId int,
+@ProductId int,
+@Discount int,
+@Type bit
+AS
+	UPDATE tbl_product_deal
+	SET discount = @Discount, type = @Type
+	WHERE productId = @ProductId AND dealId = @DealId
+GO
+
+---------- add product for voucher ---------
+create procedure AddProductOfVoucher
+@Voucher varchar(50),
+@ProductId int
+AS
+	INSERT INTO tbl_voucher_product(voucherId, productId)
+	VALUES(@Voucher, @ProductId)
+GO
+
+--------- delete voucher ---------------
+create procedure DeleteVoucher
+@VoucherId int
+AS
+	DELETE 
+	FROM tbl_voucher
+	WHERE voucherId = @VoucherId
+GO
