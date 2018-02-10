@@ -113,4 +113,27 @@ AS
 	FROM [tbl_comment]
 	WHERE postId = @PostId
 GO
---
+--Get comment of a comment
+CREATE PROCEDURE GetCommentOfComment
+@CoId int
+AS
+	SELECT *
+	FROM [tbl_comment]
+	WHERE parentId = @CoId
+GO
+--Delete comment 
+CREATE PROCEDURE DeleteComment
+@CoId
+AS
+	DELETE
+	FROM [tbl_comment]
+	WHERE id = @CoId
+GO
+--Edit comment
+CREATE PROCEDURE UpdateComment
+@CoId
+AS
+	UPDATE [tbl_comment]
+	SET	tbl_comment.title = ?, tbl_comment.commentContent= ? ,  tbl_comment.time=GETDATE()
+	WHERE id
+GO
