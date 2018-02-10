@@ -153,7 +153,53 @@ AS
 		ELSE
 			SET @Role = 0;
 	END
-	
+--Change Password
+CREATE PROCEDURE ChangePassword
+@UserId varchar(50), @newPass varchar(50)
+AS
+	UPDATE [tbl_user]
+	SET	[tbl_user].password = @newPass
+	WHERE userId = @UserId
+GO
+--Get users by name
+CREATE PROCEDURE GetUserByName
+@FullName nvarchar(50)
+AS
+	SELECT *
+	FROM [tbl_user]
+	WHERE tbl_user.fullname like @FullName
+GO
+--Get list product with discount and time sale
+SELECT dbo.tbl_product.*, dbo.tbl_product_deal.discount, dbo.tbl_product_deal.type, dbo.tbl_deal.startTime, dbo.tbl_deal.duration
+FROM            dbo.tbl_deal INNER JOIN
+                         dbo.tbl_product_deal ON dbo.tbl_deal.id = dbo.tbl_product_deal.dealId INNER JOIN
+                         dbo.tbl_product ON dbo.tbl_product_deal.productId = dbo.tbl_product.productId
+WHERE dbo.tbl_product.productId = dbo.tbl_product_deal.	productId	
+--Add product
+CREATE PROCEDURE AddProduct
+@Id int, @Name nvarchar(50), @Brand nvarchar(50), @Price money, @Size int
+--Update product information		
+--Add order
+--Update order status (staff)
+--Delete order (staff)
+--Add deal
+--Delete Deal
+--Get deal are activity
+--Get product with deal
+--Add product are allow in voucher
+--Update voucher
+CREATE PROCEDURE UpdateVoucher
+@Id int, @type bit, @discount int, @description nvarchar(250), 
+@startTime datetime, @duration int, @amount int
+AS
+	UPDATE dbo.tbl_voucher
+	SET	dbo.tbl_voucher.type = @type, dbo.tbl_voucher.discount = @discount, dbo.tbl_voucher.description = @description,
+		dbo.tbl_voucher.startTime = @startTime, dbo.tbl_voucher.duration = @duration, dbo.tbl_voucher.amount =@amount
+	WHERE dbo.tbl_voucher.voucherId = @Id
+GO
+--Get all voucher
+SELECT *
+FROM dbo.tbl_voucher
 ------------------NGOC -----------------
 --------------PROCEDURE-----------------
 ----- get role name ---------
