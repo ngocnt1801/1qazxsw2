@@ -12,6 +12,11 @@ AS
 Insert Into dbo.tbl_user ([userId],[password],[email],[role],[date_reg]) 
 values ('test2' , 'test1' , 'test1@test1' , 3  , GETDATE());
 go
+----------------check exist---
+IF EXISTS ( SELECT *	FROM [tbl_user] WHERE tbl_user.userId = 'testuser' AND tbl_user.password = 'Testuser1234')
+Begin 
+	print	'exist'
+End
 --------------------PROCEDURE------------------------
 CREATE PROCEDURE register_user
 	@UserName varchar(50), @UserPassword varchar(50), 
@@ -123,7 +128,7 @@ AS
 GO
 --Delete comment 
 CREATE PROCEDURE DeleteComment
-@CoId
+@CoId int
 AS
 	DELETE
 	FROM [tbl_comment]
@@ -131,14 +136,24 @@ AS
 GO
 --Edit comment
 CREATE PROCEDURE UpdateComment
-@CoId
+@CoId int, @Title nvarchar(50), @Content nvarchar(MAX)
 AS
 	UPDATE [tbl_comment]
-	SET	tbl_comment.title = ?, tbl_comment.commentContent= ? ,  tbl_comment.time=GETDATE()
-	WHERE id
+	SET	tbl_comment.title = @Title, tbl_comment.commentContent = @Content ,  tbl_comment.time=GETDATE()
+	WHERE id = @CoId
 GO
-
-
+--Login 
+CREATE PROCEDURE CheckLogin
+@Role int OUTPUT,
+@UserName varchar(50), @Password varchar(50)
+AS
+	BEGIN
+		IF EXISTS (		SELECT *	FROM [tbl_user] WHERE tbl_user.userId = @UserName AND tbl_user.password=@Password	)
+			SET @Role =  (		SELECT role	FROM [tbl_user] WHERE tbl_user.userId = @UserName AND tbl_user.password=@Password	);
+		ELSE
+			SET @Role = 0;
+	END
+	
 ------------------NGOC -----------------
 --------------PROCEDURE-----------------
 ----- get role name ---------
