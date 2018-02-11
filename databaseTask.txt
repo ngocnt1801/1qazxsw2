@@ -62,3 +62,7 @@ Voucher
 	Update voucher		x
 	Get all voucher are activity	o
 	Get all voucher		x
+//TASK UPDATE 02-11-2018
+SIZE
+	Get size of product
+	Add Product size
