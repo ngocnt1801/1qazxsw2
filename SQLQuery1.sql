@@ -177,16 +177,94 @@ FROM            dbo.tbl_deal INNER JOIN
 WHERE dbo.tbl_product.productId = dbo.tbl_product_deal.	productId	
 --Add product
 CREATE PROCEDURE AddProduct
-@Id int, @Name nvarchar(50), @Brand nvarchar(50), @Price money, @Size int
---Update product information		
+ @Name nvarchar(50), @Brand nvarchar(50), @Price money, @Country nvarchar(50), @Description nvarchar(MAX),
+@Material nvarchar(50), @Color nvarchar(50), @CategoryId int, @Quantity int
+AS
+	INSERT INTO tbl_product(name,brand,price,country,description,material,color,categoryID,quantity)
+	VALUES (@Name,@Brand,@Price,@Country,@Description,@Material,@Color,@CategoryId,@Quantity)
+GO
+--Update product information	
+CREATE PROCEDURE UpdateProduct
+@Id int, @Name nvarchar(50), @Brand nvarchar(50), @Price money, @Country nvarchar(50), @Description nvarchar(MAX),
+@Material nvarchar(50), @Color nvarchar(50), @CategoryId int, @Quantity int
+AS
+	UPDATE [tbl_product]
+	SET	tbl_product.name = @Name, tbl_product.brand = @Brand, tbl_product.country = @Country, tbl_product.price = @Price, 
+		tbl_product.description = @Description, tbl_product.material = @Material, tbl_product.color = @Color, tbl_product.categoryID = @CategoryId, tbl_product.quantity = @Quantity
+	WHERE tbl_product.productId = @Id
+GO	
 --Add order
+CREATE PROCEDURE AddOrder
+@TotalPrice money, @Status int, @UserId varchar(50), @guestId int,
+@OrderId int OUTPUT
+AS
+	INSERT INTO tbl_order(date,totalPrice,status,userId,guestId)
+	VALUES (GETDATE(), @TotalPrice, @Status, @UserId, @guestId)
+	SELECT @OrderId = SCOPE_IDENTITY()
+    SELECT @OrderId AS id
+GO
 --Update order status (staff)
+CREATE PROCEDURE UpdateOrderStatus
+@Status int, @Id int
+AS
+	UPDATE [tbl_order]
+	SET	tbl_order.status = @Status
+	WHERE tbl_order.id = @Id
+GO	
 --Delete order (staff)
+CREATE PROCEDURE DeleteOrder
+@Id int
+AS
+	DELETE
+	FROM [tbl_order]
+	WHERE tbl_order.id = @Id
+GO
 --Add deal
+CREATE PROCEDURE AddDeal
+@DealContent nvarchar(50), @StartTime datetime, @Duration int,
+@DealId int OUTPUT
+AS
+	INSERT INTO tbl_deal(dealContent,startTime,duration)
+	VALUES (@DealContent,@StartTime,@Duration)
+	SELECT @DealId = SCOPE_IDENTITY()
+    SELECT @DealId AS id
+GO
 --Delete Deal
+CREATE PROCEDURE DeleteDeal
+@Id int
+AS
+	DELETE
+	FROM [tbl_deal]
+	WHERE tbl_deal.id = @Id
+GO
 --Get deal are activity
---Get product with deal
+CREATE PROCEDURE IsDealAlive
+@IsLive int OUTPUT,
+@Id int
+AS
+	BEGIN
+		IF EXISTS (		SELECT *	FROM [tbl_deal] WHERE tbl_deal.id = @Id	)
+			SET @IsLive =  (		SELECT (tbl_deal.startTime + tbl_deal.duration) - GETDATE()
+									FROM [tbl_deal] WHERE tbl_deal.id = @Id );
+		ELSE
+			SET @IsLive = -999;
+	END
+GO
+--Get products with deal
+CREATE PROCEDURE GetProductOfDeal
+@DealId int
+AS
+	SELECT *
+	FROM [tbl_product_deal]
+	WHERE tbl_product_deal.dealId = @DealId
+GO
 --Add product are allow in voucher
+CREATE PROCEDURE AddProductVoucher
+@VoucherId varchar(50), @ProductId int
+AS
+	INSERT INTO tbl_voucher_product(voucherId,productId)
+	VALUES (@VoucherId,@ProductId)
+GO
 --Update voucher
 CREATE PROCEDURE UpdateVoucher
 @Id int, @type bit, @discount int, @description nvarchar(250), 
