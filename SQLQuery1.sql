@@ -75,7 +75,7 @@ end
 
 
 -----QUAN----------------------------------------------
---GetAllRole
+--GetAllRole--view_GetAllRole
 SELECT name
 FROM tbl_role
 --GetImageOfPost
@@ -169,7 +169,7 @@ AS
 	FROM [tbl_user]
 	WHERE tbl_user.fullname like @FullName
 GO
---Get list product with discount and time sale
+--Get list product with discount and time sale --View_ProductSale
 SELECT dbo.tbl_product.*, dbo.tbl_product_deal.discount, dbo.tbl_product_deal.type, dbo.tbl_deal.startTime, dbo.tbl_deal.duration
 FROM            dbo.tbl_deal INNER JOIN
                          dbo.tbl_product_deal ON dbo.tbl_deal.id = dbo.tbl_product_deal.dealId INNER JOIN
@@ -177,7 +177,7 @@ FROM            dbo.tbl_deal INNER JOIN
 WHERE dbo.tbl_product.productId = dbo.tbl_product_deal.	productId	
 --Add product
 CREATE PROCEDURE AddProduct
- @Name nvarchar(50), @Brand nvarchar(50), @Price money, @Country nvarchar(50), @Description nvarchar(MAX),
+@Name nvarchar(50), @Brand nvarchar(50), @Price money, @Country nvarchar(50), @Description nvarchar(MAX),
 @Material nvarchar(50), @Color nvarchar(50), @CategoryId int, @Quantity int
 AS
 	INSERT INTO tbl_product(name,brand,price,country,description,material,color,categoryID,quantity)
