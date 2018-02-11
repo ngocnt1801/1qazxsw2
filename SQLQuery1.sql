@@ -201,6 +201,48 @@ GO
 SELECT *
 FROM dbo.tbl_voucher
 ------------------NGOC -----------------
+--------------VIEW----------------------
+CREATE VIEW [dbo].[ListAllComment]
+AS
+SELECT        dbo.tbl_user.fullname, dbo.tbl_comment.title, dbo.tbl_comment.commentContent, dbo.tbl_comment.time
+FROM            dbo.tbl_comment INNER JOIN
+                         dbo.tbl_user ON dbo.tbl_comment.authorId = dbo.tbl_user.userId
+
+GO
+CREATE VIEW [dbo].[ListAllPost]
+AS
+SELECT        dbo.tbl_post.postId, dbo.tbl_post.title, dbo.tbl_post.timePost, dbo.tbl_user.fullname
+FROM            dbo.tbl_post INNER JOIN
+                         dbo.tbl_user ON dbo.tbl_post.userId = dbo.tbl_user.userId
+
+GO
+CREATE VIEW [dbo].[ListAllUser]
+AS
+SELECT        dbo.tbl_role.name, dbo.tbl_user.userId, dbo.tbl_user.email, dbo.tbl_user.fullname, dbo.tbl_user.phone, dbo.tbl_user.gender
+FROM            dbo.tbl_role INNER JOIN
+                         dbo.tbl_user ON dbo.tbl_role.roleid = dbo.tbl_user.role
+
+GO
+CREATE VIEW [dbo].[ListOrderWithVoucher]
+AS
+SELECT        dbo.tbl_order.id, dbo.tbl_order.userId, dbo.tbl_order.date, dbo.tbl_order.totalPrice, dbo.tbl_voucher.discount, dbo.tbl_voucher.voucherId, dbo.tbl_order.status, dbo.tbl_order.approveder_id
+FROM            dbo.tbl_order INNER JOIN
+                         dbo.tbl_order_status ON dbo.tbl_order.status = dbo.tbl_order_status.order_statusId INNER JOIN
+                         dbo.tbl_order_voucher ON dbo.tbl_order.id = dbo.tbl_order_voucher.orderId INNER JOIN
+                         dbo.tbl_voucher ON dbo.tbl_order_voucher.voucherId = dbo.tbl_voucher.voucherId
+
+GO
+CREATE VIEW [dbo].[ListProductWithDeal]
+AS
+SELECT        dbo.tbl_product.name, dbo.tbl_product.price, dbo.tbl_image.url, dbo.tbl_product_deal.discount
+FROM            dbo.tbl_product INNER JOIN
+                         dbo.tbl_product_deal ON dbo.tbl_product.productId = dbo.tbl_product_deal.productId INNER JOIN
+                         dbo.tbl_image ON dbo.tbl_product.productId = dbo.tbl_image.productId INNER JOIN
+                         dbo.tbl_deal ON dbo.tbl_product_deal.dealId = dbo.tbl_deal.id
+WHERE        (dbo.tbl_deal.startTime > DATEDIFF(hour, dbo.tbl_deal.duration, GETDATE()))
+
+GO
+
 --------------PROCEDURE-----------------
 ----- get role name ---------
 select name
