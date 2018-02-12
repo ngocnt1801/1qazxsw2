@@ -62,7 +62,67 @@ Voucher
 	Update voucher		x
 	Get all voucher are activity	o
 	Get all voucher		x
-//TASK UPDATE 02-11-2018
 SIZE
 	Get size of product
 	Add Product size
+
+***********************************************************
+login  	- user account
+	- facebook
+register
+load list product for guest with discount sort by discount
+show detail a product include product information, list color, list size list image
+search product by name
+filter products by discount activity, sort by rating, by price high to low and low to high
+rating product
+checkout
+load list post sort by timePost newest to oldest
+show a content of post
+comment in a product detail
+comment in a post detail
+load comment from newest -> oldest, pagination of post and product
+delete comment
+edit comment
+load user profile
+load histotry order
+load status and deatil of order include products in order
+load product by category
+cancel order
+load all poduct sort by id
+update product informtaion include quantity
+delete product
+add product
+add image into product
+delete image of product
+add color of product
+add size of poroduct
+add category
+delete category
+edit name category
+load all category sort by name
+load all post sort by time post
+add post + add image to post
+delete post
+update post
+list all order not approved 
+approve order
+list all order sort by date
+delete order
+reply comment
+delete comment
+edit comment
+add deal
+update deal
+delete dealadd product discount for deal
+delete product discount for deal
+update product discount for deal
+create voucher
+delete voucher
+update voucher
+add product for voucher
+delete product in voucher
+list all account by role
+set role for account
+delete account
+
+
