@@ -11,6 +11,6 @@ namespace snkrshop.Repositories
         int processLogin(string username, string password);
         string getName(string username);
         bool updatePassword(string username, string newPassword);
-
+        
     }
 }

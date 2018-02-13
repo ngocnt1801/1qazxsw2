@@ -1,4 +1,6 @@
-﻿using System;
+﻿using snkrshop.Repositories;
+using snkrshop.RepositoriesImplement;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -11,7 +13,13 @@ namespace snkrshop.Controllers
     {
         public string Get()
         {
-            return "XXX";
+            return "test";
+        }
+        [Route("user/test")]
+        public string test()
+        {
+            
+
         }
 
     }
