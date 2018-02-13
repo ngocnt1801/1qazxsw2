@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace snkrshop.Repositories
 {
-    interface UserRepository
+    partial interface UserRepository
     {
         int processLogin(string username, string password);
         string getName(string username);

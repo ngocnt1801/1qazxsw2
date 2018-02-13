@@ -5,7 +5,7 @@ using System.Web;
 
 namespace snkrshop.Services
 {
-    interface UserService
+    partial interface UserService
     {
         int checkLogin(string username, string password);
         string getUserName();

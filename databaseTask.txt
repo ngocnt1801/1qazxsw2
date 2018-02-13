@@ -125,4 +125,6 @@ list all account by role	o
 set role for account	x
 delete account	o
 
-
+******************** thêm ************************
+[package] - [class name] - [method name]
+Utility - DBUtils - GetConnection
