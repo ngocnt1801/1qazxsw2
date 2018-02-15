@@ -83,7 +83,7 @@ login  	- user account	x
 	- facebook
 register	o	/user/register
 load list product for guest with discount sort by discount	x
-show detail a product include product information, list color, list size list image	o
+show detail a product include product information, list color, list size list image,discount,timesale	o
 search product by name	x
 filter products by discount activity, sort by rating, by price high to low and low to high	o
 rating product	x
