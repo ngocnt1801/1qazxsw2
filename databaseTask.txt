@@ -81,7 +81,7 @@ SIZE
 ***********************************************************
 login  	- user account	x
 	- facebook
-register	o
+register	o	/user/register
 load list product for guest with discount sort by discount	x
 show detail a product include product information, list color, list size list image	o
 search product by name	x

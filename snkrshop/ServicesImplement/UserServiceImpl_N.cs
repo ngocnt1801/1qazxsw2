@@ -1,6 +1,7 @@
 ﻿using snkrshop.Repositories;
 using snkrshop.RepositoriesImplement;
 using snkrshop.Services;
+using snkrshop.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -20,6 +21,7 @@ namespace snkrshop.ServicesImplement
         {
             userRepository = new UserRepositoryImpl();
         }
+
         public string Register(string username, string password, string fullname, string phone, string email, string address)
         {
             string result = FAIL;
@@ -37,10 +39,11 @@ namespace snkrshop.ServicesImplement
                 {
                     result =  DUPLICATE;
                 }
+                se.LogExceptionToFile();
             }catch (Exception ex)
             {
                 result = FAIL;
-                
+                ex.LogExceptionToFile();
             }
             return result;
         }
