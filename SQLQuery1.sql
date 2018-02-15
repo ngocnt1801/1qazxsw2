@@ -520,3 +520,14 @@ AS
 	FROM tbl_voucher
 	WHERE voucherId = @VoucherId
 GO
+-----------register-------------------
+create procedure AddAccount
+@Username varchar(50),
+@Password varchar(50),
+@Phone varchar(15),
+@Email varchar(250),
+@Address nvarchar(250)
+AS
+	INSERT INTO tbl_user()
+	VALUES
+GO

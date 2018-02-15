@@ -9,14 +9,49 @@ using System.Web;
 
 namespace snkrshop.RepositoriesImplement
 {
-    public class UserRepositoryImpl : UserRepository
+    public partial class UserRepositoryImpl : UserRepository
     {
-        public string getName(string username)
+        public bool AddUser(string username, string password, string fullname, string email, string phone, string address)
         {
-            return "";
+            SqlConnection cnn = DBUtils.GetConnection();
+            string sql = "AddUser";
+            SqlCommand cmd = new SqlCommand(sql, cnn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@Username",username));
+            cmd.Parameters.Add(new SqlParameter("@Password",password));
+            cmd.Parameters.Add(new SqlParameter("@Fullname",fullname));
+            cmd.Parameters.Add(new SqlParameter("@Phone",phone));
+            cmd.Parameters.Add(new SqlParameter("@Email",email));
+            cmd.Parameters.Add(new SqlParameter("@Address",address));
+            int result;
+            try
+            {
+               if(cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                }
+                 result = cmd.ExecuteNonQuery();
+            }
+            catch (SqlException se)
+            {
+                throw new Exception(se.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (cnn.State == ConnectionState.Open)
+                {
+                    cnn.Close();
+                }
+            }
+
+            return result > 0;
         }
 
-        public string getName()
+        public string model()
         {
             String sql = "Select * from tbl_user";
             SqlConnection cnn = DBUtils.GetConnection();
@@ -49,14 +84,6 @@ namespace snkrshop.RepositoriesImplement
             return "nothing";
         }
 
-        public int processLogin(string username, string password)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool updatePassword(string username, string newPassword)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

@@ -2,6 +2,18 @@
 *	QUAN: x		*
 *	NGOC: o		*
 *************************
+phần làm thêm ghi ở đây
+******************** thêm ************************
+***************NGOC*****************************
+[package] - [class name] - [method name]
+Utility - DBUtils - GetConnection
+Utility - Log - LogMessageToFile
+Utility - Log - LogExceptionToFile
+*************************
+
+
+
+
 
 
 Role
@@ -125,6 +137,3 @@ list all account by role	o
 set role for account	x
 delete account	o
 
-******************** thêm ************************
-[package] - [class name] - [method name]
-Utility - DBUtils - GetConnection
