@@ -9,17 +9,14 @@ using System.Web.Http;
 
 namespace snkrshop.Controllers
 {
-    public partial class CommentController : ApiController
+    public partial class PostController : ApiController
     {
         CommentService commentService = new CommentServiceImpl();
 
-        [Route("comment/delete")]
-        public string DeleteComment(int commentId)
+        [Route("post/comment/add")]
+        public string AddCommentInPost(string title, string content, int postId, string authorId)
         {
-            return commentService.DeleteComment(commentId);
+            return commentService.AddCommentToPost(title, content, postId, authorId);
         }
-
-        
-        
     }
 }

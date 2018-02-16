@@ -95,7 +95,7 @@ checkout	o
 load list post sort by timePost newest to oldest	x
 show a content of post	o
 comment in a product detail	x
-comment in a post detail	o
+comment in a post detail	o	/post/comment/add
 load comment from newest -> oldest, pagination of post and product	x
 delete comment	o	/comment/delete
 edit comment	x

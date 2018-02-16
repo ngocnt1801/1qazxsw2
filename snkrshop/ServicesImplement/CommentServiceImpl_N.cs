@@ -19,6 +19,26 @@ namespace snkrshop.ServicesImplement
         {
             commentRepository = new CommentRepositoryImpl();
         }
+
+        public string AddCommentToPost(string title, string content, int postId, string authorId)
+        {
+            string result = FAIL;
+            try
+            {
+                if (commentRepository.AddCommentToPost(title, content, postId, authorId)
+                {
+                    result = SUCCESS;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ex.LogExceptionToFile();
+                throw new Exception(ex.Message);
+            }
+            return result;
+        }
+
         public string DeleteComment(int commentId)
         {
             string result = FAIL;

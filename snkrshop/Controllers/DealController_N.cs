@@ -9,7 +9,7 @@ using System.Web.Http;
 
 namespace snkrshop.Controllers
 {
-    public class DealController : ApiController
+    public partial class DealController : ApiController
     {
         DealService dealService = new DealServiceImpl();
         [Route("deal/delete")]
