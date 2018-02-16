@@ -17,5 +17,10 @@ namespace snkrshop.Controllers
         {
             return this.orderService.DeleteOrder(orderId);
         }
+        [Route("order/cancel")]
+        public string CancelOrder(int orderId)
+        {
+            return this.orderService.CancelOrder(orderId);
+        }
     }
 }

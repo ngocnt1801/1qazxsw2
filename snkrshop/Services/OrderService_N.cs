@@ -8,5 +8,6 @@ namespace snkrshop.Services
     partial interface OrderService
     {
         string DeleteOrder(int orderId);
+        string CancelOrder(int orderId);
     }
 }

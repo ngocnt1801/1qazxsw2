@@ -20,6 +20,24 @@ namespace snkrshop.ServicesImplement
             this.orderRepository = new OrderRepositoryImpl();
         }
 
+        public string CancelOrder(int orderId)
+        {
+            string result = FAIL;
+            try
+            {
+                if (orderRepository.CancelOrder(orderId))
+                {
+                    result = SUCCESS;
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.LogExceptionToFile();
+                throw new Exception(ex.Message);
+            }
+            return result;
+        }
+
         public string DeleteOrder(int orderId)
         {
             string result = FAIL;

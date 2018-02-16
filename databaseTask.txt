@@ -103,7 +103,7 @@ load user profile	o
 load histotry order	x
 load status and deatil of order include products in order	o
 load product by category	x
-cancel order	o	
+cancel order	o	/order/cancel
 load all poduct sort by id	x
 update product informtaion include quantity	o
 delete product	x
