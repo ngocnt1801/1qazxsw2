@@ -87,7 +87,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\CategoryController_N.cs" />
+    <Compile Include="Controllers\CommentController_N.cs" />
+    <Compile Include="Controllers\DealController_N.cs" />
+    <Compile Include="Controllers\OrderController_N.cs" />
+    <Compile Include="Controllers\PostController_N.cs" />
+    <Compile Include="Controllers\ProductController_N.cs" />
+    <Compile Include="Controllers\UserController_N.cs" />
+    <Compile Include="Controllers\VoucherController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -111,11 +118,37 @@
     <Compile Include="Models\Voucher.cs" />
     <Compile Include="Models\VoucherProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RepositoriesImplement\UserRepositoryImpl.cs" />
-    <Compile Include="Repositories\UserRepository.cs" />
-    <Compile Include="Repositories\UserRepository_Q.cs" />
-    <Compile Include="Services\UserService.cs" />
+    <Compile Include="RepositoriesImplement\CategoryRepositoryImpl_N.cs" />
+    <Compile Include="RepositoriesImplement\CommentRepositoryImpl_N.cs" />
+    <Compile Include="RepositoriesImplement\DealRepositoryImpl_N.cs" />
+    <Compile Include="RepositoriesImplement\ImageRepositoryImpl_N.cs" />
+    <Compile Include="RepositoriesImplement\OrderRepositoryImpl_N.cs" />
+    <Compile Include="RepositoriesImplement\UserRepositoryImpl_N.cs" />
+    <Compile Include="RepositoriesImplement\VoucherRepositoryImpl_N.cs" />
+    <Compile Include="Repositories\CategoryRepository_N.cs" />
+    <Compile Include="Repositories\CommentRepository_N.cs" />
+    <Compile Include="Repositories\DealRepository_N.cs" />
+    <Compile Include="Repositories\ImageRepository_N.cs" />
+    <Compile Include="Repositories\OrderRepository_N.cs" />
+    <Compile Include="Repositories\ProductRepository_N.cs" />
+    <Compile Include="Repositories\UserRepository_N.cs" />
+    <Compile Include="Repositories\VoucherRepository_N.cs" />
+    <Compile Include="ServicesImplement\CategoryServiceImpl_N.cs" />
+    <Compile Include="ServicesImplement\CommentServiceImpl_N.cs" />
+    <Compile Include="ServicesImplement\DealServiceImpl_N.cs" />
+    <Compile Include="ServicesImplement\OrderServiceImpl_N.cs" />
+    <Compile Include="ServicesImplement\ProductServiceImpl_N.cs" />
+    <Compile Include="ServicesImplement\UserServiceImpl_N.cs" />
+    <Compile Include="ServicesImplement\VoucherServiceImpl_N.cs" />
+    <Compile Include="Services\CategoryService_N.cs" />
+    <Compile Include="Services\CommentService_N.cs" />
+    <Compile Include="Services\DealService_N.cs" />
+    <Compile Include="Services\OrderService_N.cs" />
+    <Compile Include="Services\ProductService_N.cs" />
+    <Compile Include="Services\UserService_N.cs" />
+    <Compile Include="Services\VoucherService_N.cs" />
     <Compile Include="Utilities\DBUtils.cs" />
+    <Compile Include="Utilities\Log.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -128,7 +161,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ServicesImplement\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

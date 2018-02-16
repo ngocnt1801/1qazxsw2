@@ -78,7 +78,7 @@ Voucher
 	Get all voucher		x
 SIZE
 	Get size of product
-	Add Product size
+	Add Product size	o
 CATEGORY
 	Delete category o
 

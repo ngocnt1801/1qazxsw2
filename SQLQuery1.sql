@@ -176,8 +176,15 @@ FROM            dbo.tbl_deal INNER JOIN
 WHERE dbo.tbl_product.productId = dbo.tbl_product_deal.	productId	
 --Add product
 CREATE PROCEDURE AddProduct
-@Name nvarchar(50), @Brand nvarchar(50), @Price money, @Country nvarchar(50), @Description nvarchar(MAX),
-@Material nvarchar(50), @Color nvarchar(50), @CategoryId int, @Quantity int
+@Name nvarchar(50), 
+@Brand nvarchar(50), 
+@Price money, 
+@Country nvarchar(50), 
+@Description nvarchar(MAX),
+@Material nvarchar(50), 
+@Color nvarchar(50), 
+@CategoryId int, 
+@Quantity int
 AS
 	INSERT INTO tbl_product(name,brand,price,country,description,material,color,categoryID,quantity)
 	VALUES (@Name,@Brand,@Price,@Country,@Description,@Material,@Color,@CategoryId,@Quantity)
@@ -214,9 +221,9 @@ GO
 CREATE PROCEDURE DeleteOrder
 @Id int
 AS
-	DELETE
-	FROM [tbl_order]
-	WHERE tbl_order.id = @Id
+	select *
+	FROM tbl_order
+	WHERE orderId = @Id
 GO
 --Add deal
 CREATE PROCEDURE AddDeal
@@ -544,7 +551,15 @@ AS
 	WHERE id = @CategoryId
 GO
 
+------------------ add product size ----------------------
 
+create procedure AddProductSize
+@ProductId int,
+@Size int
+AS
+	INSERT INTO tbl_product_size(productId, size)
+	VALUES(@ProductId, @Size)
+GO
 --------------- delete account ----------------------
 create procedure DeteteAccount
 @UserId varchar(50)
