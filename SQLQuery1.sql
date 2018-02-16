@@ -535,6 +535,16 @@ GO
 
 AddUser 'ngoc','123','Nguyễn Thúy Ngọc','123456','ngoc@com','132acv'
 
+----------------- delete category ----------------------
+create procedure DeleteCategory
+@CategoryId int
+AS
+	DELETE 
+	FROM tbl_category
+	WHERE id = @CategoryId
+GO
+
+
 --------------- delete account ----------------------
 create procedure DeteteAccount
 @UserId varchar(50)

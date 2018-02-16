@@ -123,11 +123,12 @@ update post	o
 list all order not approved x
 approve order	o
 list all order sort by date	x
-delete order	o
+delete order	o	/order/delete
 reply comment	x
 add deal	o
 update deal	x
-delete dealadd product discount for deal	o
+delete deal	o
+add product discount for deal	o
 delete product discount for deal	x
 update product discount for deal	o
 create voucher	x
