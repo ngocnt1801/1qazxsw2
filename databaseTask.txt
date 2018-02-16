@@ -132,8 +132,7 @@ add product discount for deal	o
 delete product discount for deal	x
 update product discount for deal	o
 create voucher	x
-delete voucher	o
-update voucher	x
+delete voucher	o	/voucher/delete
 add product for voucher	o
 delete product in voucher	x
 list all account by role	o
