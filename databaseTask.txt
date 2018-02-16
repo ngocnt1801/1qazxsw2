@@ -127,7 +127,7 @@ delete order	o	/order/delete
 reply comment	x
 add deal	o
 update deal	x
-delete deal	o
+delete deal	o	/deal/delete	
 add product discount for deal	o
 delete product discount for deal	x
 update product discount for deal	o
