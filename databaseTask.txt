@@ -79,6 +79,8 @@ Voucher
 SIZE
 	Get size of product
 	Add Product size
+CATEGORY
+	Delete category o
 
 ***********************************************************
 login  	- user account	x
@@ -111,7 +113,7 @@ delete image of product	o	/product/delete/image
 add color of product	x
 add size of poroduct	o
 add category	x
-delete category	o
+delete category	o	/category/delete
 edit name category	x
 load all category sort by name	o
 load all post sort by time post	x
