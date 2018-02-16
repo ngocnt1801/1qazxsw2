@@ -9,6 +9,8 @@ phần làm thêm ghi ở đây
 Utility - DBUtils - GetConnection
 Utility - Log - LogMessageToFile
 Utility - Log - LogExceptionToFile
+
+
 *************************
 
 
@@ -93,7 +95,7 @@ show a content of post	o
 comment in a product detail	x
 comment in a post detail	o
 load comment from newest -> oldest, pagination of post and product	x
-delete comment	o
+delete comment	o	/comment/delete
 edit comment	x
 load user profile	o
 load histotry order	x
@@ -105,7 +107,7 @@ update product informtaion include quantity	o
 delete product	x
 add product	o
 add image into product	x
-delete image of product	o
+delete image of product	o	/product/delete/image
 add color of product	x
 add size of poroduct	o
 add category	x
@@ -121,8 +123,6 @@ approve order	o
 list all order sort by date	x
 delete order	o
 reply comment	x
-delete comment	o
-edit comment	x
 add deal	o
 update deal	x
 delete dealadd product discount for deal	o

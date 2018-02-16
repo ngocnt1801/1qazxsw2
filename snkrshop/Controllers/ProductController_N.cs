@@ -9,14 +9,13 @@ using System.Web.Http;
 
 namespace snkrshop.Controllers
 {
-    public partial class CommentController : ApiController
+    public partial class ProductController : ApiController
     {
-        CommentService commentService = new CommentServiceImpl();
-
-        [Route("comment/delete")]
-        public string DeleteComment(int commentId)
+        ProductService productService = new ProductServiceImpl();
+        [Route("product/delete/image")]
+        public string DeleteImage(int imageId)
         {
-            return commentService.DeleteComment(commentId);
+            return productService.DeleteImage(imageId);
         }
     }
 }

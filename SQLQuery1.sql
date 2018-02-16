@@ -84,13 +84,14 @@ AS
 	FROM [tbl_image]
 	WHERE postId = @postId
 GO
+
 --DeleteImage
 CREATE PROCEDURE DeleteImage
-@imageId int
+@ImageId int
 AS
 	DELETE 
 	FROM [tbl_image]
-	WHERE imageId = @imageId
+	WHERE imageId = @ImageId
 GO
 --Get a Post by postID
 CREATE PROCEDURE GetPostById
@@ -534,27 +535,13 @@ GO
 
 AddUser 'ngoc','123','Nguyễn Thúy Ngọc','123456','ngoc@com','132acv'
 
-------------detail of product ------------------------
-create procedure GetDetailProduct
-@ProductId int,
+--------------- delete account ----------------------
+create procedure DeteteAccount
+@UserId varchar(50)
+AS
+	
+GO
 
--------------function get a product information-------------------
-create function Get_Prodcuct_Informtion 
-(@ProductId int)
-Returns table
-as
-	return (
-		select *
-		from (
-			SELECT        dbo.tbl_product.productId, dbo.tbl_product.name, dbo.tbl_product.brand, dbo.tbl_product.price, dbo.tbl_product.country, dbo.tbl_product.description, dbo.tbl_product.material, 
-                         dbo.tbl_product.quantity, dbo.tbl_product_deal.discount, dbo.tbl_product_deal.type, dbo.tbl_deal.startTime, dbo.tbl_deal.duration
-			FROM            dbo.tbl_deal INNER JOIN
-                         dbo.tbl_product_deal ON dbo.tbl_deal.id = dbo.tbl_product_deal.dealId INNER JOIN
-                         dbo.tbl_product ON dbo.tbl_product_deal.productId = dbo.tbl_product.productId AND dbo.tbl_product_deal.productId = dbo.tbl_product.productId
-						 WHERE GETDATE() >= tbl_deal.startTime AND GETDATE() < DATEADD(hour, tbl_deal.duration, tbl_deal.startTime)
-			)
-			where dbo.tbl_product.productId = @ProductId
-	)
 
 -----------DROP STORE PROCEDURE----------------
 DROP Procedure if exists AddUser
