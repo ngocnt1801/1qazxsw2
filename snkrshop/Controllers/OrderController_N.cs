@@ -22,5 +22,10 @@ namespace snkrshop.Controllers
         {
             return this.orderService.CancelOrder(orderId);
         }
+        [Route("order/approve")]
+        public string ApproveOrder(int orderId)
+        {
+            return this.orderService.ApproveOrder(orderId);
+        }
     }
 }

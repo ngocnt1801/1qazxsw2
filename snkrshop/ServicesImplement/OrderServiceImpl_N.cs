@@ -1,4 +1,5 @@
-﻿using snkrshop.Repositories;
+﻿using snkrshop.Models;
+using snkrshop.Repositories;
 using snkrshop.RepositoriesImplement;
 using snkrshop.Services;
 using snkrshop.Utilities;
@@ -13,6 +14,9 @@ namespace snkrshop.ServicesImplement
     {
         const string FAIL = "fail";
         const string SUCCESS = "success";
+
+        
+
         OrderRepository orderRepository;
 
         public OrderServiceImpl()
@@ -20,12 +24,30 @@ namespace snkrshop.ServicesImplement
             this.orderRepository = new OrderRepositoryImpl();
         }
 
+        public string ApproveOrder(int orderId)
+        {
+            string result = FAIL;
+            try
+            {
+                if (orderRepository.UpdateOrderStatus(orderId, OrderStatus.STATUS_APPROVED))
+                {
+                    result = SUCCESS;
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.LogExceptionToFile();
+                throw new Exception(ex.Message);
+            }
+            return result;
+        }
+
         public string CancelOrder(int orderId)
         {
             string result = FAIL;
             try
             {
-                if (orderRepository.CancelOrder(orderId))
+                if (orderRepository.UpdateOrderStatus(orderId,OrderStatus.STATUS_CANCEL))
                 {
                     result = SUCCESS;
                 }

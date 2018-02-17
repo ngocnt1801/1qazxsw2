@@ -11,12 +11,14 @@ namespace snkrshop.RepositoriesImplement
 {
     public partial class OrderRepositoryImpl : OrderRepository
     {
-        public bool CancelOrder(int orderId)
+        public bool UpdateOrderStatus(int orderId, int orderStatus)
         {
             SqlConnection cnn = DBUtils.GetConnection();
-            string sql = "CancelOrder";
+            string sql = "UpdateOrderStatus";
             SqlCommand cmd = new SqlCommand(sql, cnn);
-            cmd.Parameters.AddWithValue("@OrderId", orderId);
+            cmd.Parameters.AddWithValue("@Status", orderStatus);
+            cmd.Parameters.AddWithValue("@Id", orderId);
+
             cmd.CommandType = CommandType.StoredProcedure;
             int result;
             try

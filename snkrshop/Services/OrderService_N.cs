@@ -9,5 +9,6 @@ namespace snkrshop.Services
     {
         string DeleteOrder(int orderId);
         string CancelOrder(int orderId);
+        string ApproveOrder(int orderId);
     }
 }

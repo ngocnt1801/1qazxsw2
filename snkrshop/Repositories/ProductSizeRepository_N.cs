@@ -5,9 +5,8 @@ using System.Web;
 
 namespace snkrshop.Repositories
 {
-    partial interface OrderRepository
+    partial interface ProductSizeRepository
     {
-        bool DeleteOrder(int orderId);
-        bool UpdateOrderStatus(int orderId, int orderStatus);
+        bool AddProductSize(int productId, int size);
     }
 }

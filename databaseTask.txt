@@ -121,7 +121,7 @@ add post + add image to post	o
 delete post	x
 update post	o
 list all order not approved x
-approve order	o
+approve order	o	/order/approve
 list all order sort by date	x
 delete order	o	/order/delete
 reply comment	x
