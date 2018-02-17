@@ -8,5 +8,6 @@ namespace snkrshop.Repositories
     partial interface DealRepository
     {
         bool DeleteDeal(int dealId);
+        int AddDeal(string content, DateTime startTime, int duration);
     }
 }

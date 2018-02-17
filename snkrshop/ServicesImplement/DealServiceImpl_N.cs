@@ -13,11 +13,30 @@ namespace snkrshop.ServicesImplement
     {
         const string FAIL = "fail";
         const string SUCCESS = "success";
+        const int INT_FAIL = -1;
+
         DealRepository dealRepository;
 
         public DealServiceImpl()
         {
             this.dealRepository = new DealRepositoryImpl();
+        }
+
+        public int AddDeal(string content, DateTime startTime, int duration)
+        {
+            
+            try
+            {
+                return dealRepository.AddDeal(content, startTime, duration);
+            }
+            catch (Exception ex)
+            {
+                ex.LogExceptionToFile();
+                throw new Exception(ex.Message);
+
+               
+            }
+            return INT_FAIL;
         }
 
         public string DeleteDeal(int dealId)

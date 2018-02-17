@@ -17,5 +17,12 @@ namespace snkrshop.Controllers
         {
             return this.dealService.DeleteDeal(dealId);
         }
+
+        [Route("deal/add")]
+        [HttpPost]
+        public int AddDeal(string content, DateTime startTime, int duration)
+        {
+            return this.dealService.AddDeal(content, startTime, duration);
+        }
     }
 }
