@@ -127,11 +127,15 @@
     <Compile Include="RepositoriesImplement\VoucherRepositoryImpl_N.cs" />
     <Compile Include="Repositories\CategoryRepository_N.cs" />
     <Compile Include="Repositories\CommentRepository_N.cs" />
+    <Compile Include="Repositories\CommentRepository_Q.cs" />
     <Compile Include="Repositories\DealRepository_N.cs" />
     <Compile Include="Repositories\ImageRepository_N.cs" />
     <Compile Include="Repositories\OrderRepository_N.cs" />
+    <Compile Include="Repositories\PostRepository_Q.cs" />
     <Compile Include="Repositories\ProductRepository_N.cs" />
+    <Compile Include="Repositories\ProductRepository_Q.cs" />
     <Compile Include="Repositories\UserRepository_N.cs" />
+    <Compile Include="Repositories\UserRepository_Q.cs" />
     <Compile Include="Repositories\VoucherRepository_N.cs" />
     <Compile Include="ServicesImplement\CategoryServiceImpl_N.cs" />
     <Compile Include="ServicesImplement\CommentServiceImpl_N.cs" />
