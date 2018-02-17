@@ -12,10 +12,17 @@ namespace snkrshop.Controllers
     public partial class ProductController : ApiController
     {
         ProductService productService = new ProductServiceImpl();
+
         [Route("product/delete/image")]
         public string DeleteImage(int imageId)
         {
             return productService.DeleteImage(imageId);
+        }
+
+        [Route("product/add/size")]
+        public string AddProductSize(int productId, int size)
+        {
+            return productService.AddProductSize(productId, size);
         }
     }
 }

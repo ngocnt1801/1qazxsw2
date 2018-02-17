@@ -8,5 +8,6 @@ namespace snkrshop.Services
     partial interface ProductService
     {
         string DeleteImage(int imageId);
+        string AddProductSize(int productId, int size);
     }
 }

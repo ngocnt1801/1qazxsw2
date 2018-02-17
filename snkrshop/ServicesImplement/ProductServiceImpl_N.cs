@@ -13,11 +13,34 @@ namespace snkrshop.ServicesImplement
     {
         const string FAIL = "fail";
         const string SUCCESS = "success";
+
         ImageRepository imageRepository;
+        ProductSizeRepository productSizeRepository;
 
         public ProductServiceImpl()
         {
             this.imageRepository = new ImageRepositoryImpl();
+            this.productSizeRepository = new ProductSizeRepositoryImpl();
+        }
+
+        public string AddProductSize(int productId, int size)
+        {
+            string result = FAIL;
+            try
+            {
+                if (productSizeRepository.AddProductSize(productId, size))
+                {
+                    result = SUCCESS;
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.LogExceptionToFile();
+                throw new Exception(ex.Message);
+
+
+            }
+            return result;
         }
 
         public string DeleteImage(int imageId)
