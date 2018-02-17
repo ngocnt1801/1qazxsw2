@@ -128,7 +128,7 @@ reply comment	x
 add deal	o	/deal/add
 update deal	x
 delete deal	o	/deal/delete	
-add product discount for deal	o
+add product discount for deal	o	/deal/product/add
 delete product discount for deal	x
 update product discount for deal	o
 create voucher	x

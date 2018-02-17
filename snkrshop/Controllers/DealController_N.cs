@@ -24,5 +24,11 @@ namespace snkrshop.Controllers
         {
             return this.dealService.AddDeal(content, startTime, duration);
         }
+
+        [Route("deal/product/add")]
+        public string AddProductDeal(int dealId, int productId, int discount, bool type)
+        {
+            return this.dealService.AddProductDeal(dealId, productId, discount, type);
+        }
     }
 }

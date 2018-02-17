@@ -16,6 +16,7 @@ namespace snkrshop.ServicesImplement
         const int INT_FAIL = -1;
 
         DealRepository dealRepository;
+        ProductDealRepository productDealRepository;
 
         public DealServiceImpl()
         {
@@ -37,6 +38,26 @@ namespace snkrshop.ServicesImplement
                
             }
             return INT_FAIL;
+        }
+
+        public string AddProductDeal(int dealId, int productId, int discount, bool type)
+        {
+            string result = FAIL;
+            try
+            {
+                if (productDealRepository.AddProductDeal(dealId,productId, discount,type))
+                {
+                    result = SUCCESS;
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.LogExceptionToFile();
+                throw new Exception(ex.Message);
+
+
+            }
+            return result;
         }
 
         public string DeleteDeal(int dealId)
