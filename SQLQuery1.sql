@@ -71,7 +71,7 @@ Begin
 	where orderID = 
 end
 
-
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -----QUAN----------------------------------------------
 --GetAllRole--view_GetAllRole
 SELECT name
@@ -284,7 +284,24 @@ GO
 --Get all voucher
 SELECT *
 FROM dbo.tbl_voucher
-------------------NGOC -----------------
+--Add Category
+CREATE PROCEDURE AddCategory
+@Name varchar(50), @Description varchar(150), @ParentId int
+AS
+	INSERT INTO tbl_category(name,description,parentId)
+	VALUES (@Name,@Description,@ParentId)
+GO
+--Update Category
+CREATE PROCEDURE UpdateCategory
+@Id int, @Name varchar(50), @Description varchar(150), @ParentId int
+AS
+	UPDATE dbo.tbl_category
+	SET dbo.tbl_category.name=@Name,
+		dbo.tbl_category.description=@Description,
+		dbo.tbl_category.parentId=@ParentId
+	WHERE dbo.tbl_category.id=@Id
+GO
+------------------NGOC --------------------------------------------------
 --------------VIEW----------------------
 CREATE VIEW [dbo].[ListAllComment]
 AS
