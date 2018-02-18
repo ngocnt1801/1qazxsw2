@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace snkrshop.Repositories
 {
-    partial interface OrderRepository_Q
+    partial interface OrderRepository
     {
         List<Order> GetOrderHistory(string userId);
 

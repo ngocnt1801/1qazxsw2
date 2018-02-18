@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace snkrshop.Repositories
 {
-    interface ImageRepository_Q
+    interface ImageRepository
     {
         bool AddImageToProduct(string url, int productId);
         
