@@ -51,6 +51,39 @@ namespace snkrshop.RepositoriesImplement
             return result > 0;
         }
 
+        public bool ExpiredUser(string username)
+        {
+            SqlConnection cnn = DBUtils.GetConnection();
+            string sql = "ExpiredUser";
+            SqlCommand cmd = new SqlCommand(sql, cnn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@UserId", username));
+  
+            int result;
+            try
+            {
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                }
+                result = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (cnn.State == ConnectionState.Open)
+                {
+                    cnn.Close();
+                }
+            }
+
+            return result > 0;
+        }
+
+   
         public string model()
         {
             String sql = "Select * from tbl_user";

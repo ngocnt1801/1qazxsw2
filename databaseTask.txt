@@ -47,6 +47,7 @@ User
 	GetAllUserInformation	o
 	Get users by name	x
 	Get user by role	o
+	Expired user	o
 Product
 	Get list product with discount and time sale	x
 	Search product by name, category, sort by name, price, discount	o
@@ -137,5 +138,5 @@ add product for voucher	o	/voucher/product/add
 delete product in voucher	x
 list all account by role	o
 set role for account	x
-delete account	o
+delete account	o	/user/delete
 

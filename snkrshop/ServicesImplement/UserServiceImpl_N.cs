@@ -22,6 +22,25 @@ namespace snkrshop.ServicesImplement
             userRepository = new UserRepositoryImpl();
         }
 
+        public string DeleteAccount(string username)
+        {
+            string result = FAIL;
+            try
+            {
+                if (userRepository.ExpiredUser(username))
+                {
+                    result = SUCCESS;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                result = FAIL;
+                ex.LogExceptionToFile();
+            }
+            return result;
+        }
+
         public string Register(string username, string password, string fullname, string phone, string email, string address)
         {
             string result = FAIL;

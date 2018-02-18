@@ -21,5 +21,11 @@ namespace snkrshop.Controllers
             return userService.Register(username, password, fullname, phone, email, address);
         }
 
+        [Route("user/delete")]
+        public string DeleteUser(string username)
+        {
+            return userService.DeleteAccount(username);
+        }
+
     }
 }

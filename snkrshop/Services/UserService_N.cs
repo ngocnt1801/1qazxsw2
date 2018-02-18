@@ -8,5 +8,6 @@ namespace snkrshop.Services
     partial interface UserService
     {
         string Register(string username, string password, string fullname, string phone, string email, string address);
+        string DeleteAccount(string username);
     }
 }
