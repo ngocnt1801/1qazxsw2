@@ -25,5 +25,12 @@ namespace snkrshop.Controllers
         {
             return this.postService.UpdatePost(postId, title, content);
         }
+
+        [Route("post/add")]
+        [HttpPost]
+        public string AddPost(int postId, string title, string content)
+        {
+            return this.postService.AddPost(postId, title, content);
+        }
     }
 }

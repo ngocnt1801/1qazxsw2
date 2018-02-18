@@ -9,5 +9,6 @@ namespace snkrshop.Services
     partial interface PostService
     {
         string UpdatePost(int postId, string title, string content);
+        string AddPost(int postId, string title, string content);
     }
 }

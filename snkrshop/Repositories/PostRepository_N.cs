@@ -8,5 +8,6 @@ namespace snkrshop.Repositories
     partial interface PostRepository
     {
         bool UpdatePost(int postId, string title, string content);
+        bool AddPost(int postId, string title, string content);
     }
 }

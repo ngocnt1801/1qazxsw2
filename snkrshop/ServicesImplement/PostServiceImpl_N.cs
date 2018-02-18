@@ -1,4 +1,5 @@
 ﻿using snkrshop.Repositories;
+using snkrshop.RepositoriesImplement;
 using snkrshop.Services;
 using snkrshop.Utilities;
 using System;
@@ -17,7 +18,7 @@ namespace snkrshop.ServicesImplement
 
         public PostServiceImpl()
         {
-            this.postRepository = new PostRepositoryImpl();
+            this.postRepository = new PostRepostitoryImpl();
         }
 
         public string UpdatePost(int postId, string title, string content)
@@ -26,6 +27,26 @@ namespace snkrshop.ServicesImplement
             try
             {
                 if (postRepository.UpdatePost(postId, title, content))
+                {
+                    result = SUCCESS;
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.LogExceptionToFile();
+                throw new Exception(ex.Message);
+
+
+            }
+            return result;
+        }
+
+        public string AddPost(int postId, string title, string content)
+        {
+            string result = FAIL;
+            try
+            {
+                if (postRepository.AddPost(postId, title, content))
                 {
                     result = SUCCESS;
                 }
