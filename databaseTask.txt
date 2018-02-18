@@ -107,7 +107,7 @@ cancel order	o	/order/cancel
 load all poduct sort by id	x
 update product informtaion include quantity	o
 delete product	x
-add product	o
+add product	o	/product/add
 add image into product	x
 delete image of product	o	/product/delete/image
 add color of product	x

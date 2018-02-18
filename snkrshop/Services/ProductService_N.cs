@@ -9,5 +9,6 @@ namespace snkrshop.Services
     {
         string DeleteImage(int imageId);
         string AddProductSize(int productId, int size);
+        string AddProduct(string name, string brand, float price, string country, string description, string material, int categoryId, int quantity);
     }
 }
