@@ -412,14 +412,13 @@ AS
 	VALUES (@Title, @Content, @PostId, GETDATE(), @AuthorId)
 GO
 
-create procedure ReplyComment
-@Title nvarchar(50),
+create procedure ReplyComment --Reply ko có title
 @Content nvarchar(MAX), 
 @ParentId int,
 @AuthorId varchar(50)
 AS
-	INSERT INTO tbl_comment(title, commentContent, parentId, time, authorId)
-	VALUES (@Title, @Content, @ParentId, GETDATE(), @AuthorId)
+	INSERT INTO tbl_comment(commentContent, parentId, time, authorId)
+	VALUES ( @Content, @ParentId, GETDATE(), @AuthorId)
 GO
 
 -------- Add Account --------------

@@ -15,5 +15,17 @@ namespace snkrshop.Models
         public int ProductId { get; set; }
         public int PostId { get; set; }
         public string AuthorId { get; set; }
+
+        public Comment(int id, string title, string content, DateTime time, int parentID, int productId, int postId, string authorId)
+        {
+            Id = id;
+            Title = title;
+            Content = content;
+            Time = time;
+            ParentID = parentID;
+            ProductId = productId;
+            PostId = postId;
+            AuthorId = authorId;
+        }
     }
 }
