@@ -105,7 +105,7 @@ load status and deatil of order include products in order	o
 load product by category	x
 cancel order	o	/order/cancel
 load all poduct sort by id	x
-update product informtaion include quantity	o
+update product informtaion include quantity	o	/product/update
 delete product	x
 add product	o	/product/add
 add image into product	x

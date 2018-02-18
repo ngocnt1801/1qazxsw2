@@ -30,5 +30,11 @@ namespace snkrshop.Controllers
         {
             return this.productService.AddProduct(name, brand, price, country, description, material, categoryId, quantity);
         }
+
+        [Route("product/update")]
+        public string Update(int id, string name, string brand, float price, string country, string description, string material, int categoryId, int quantity)
+        {
+            return this.productService.UpdateProduct(id, name, brand, price, country, description, material, categoryId, quantity);
+        }
     }
 }

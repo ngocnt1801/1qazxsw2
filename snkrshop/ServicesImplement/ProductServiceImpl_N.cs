@@ -84,5 +84,25 @@ namespace snkrshop.ServicesImplement
             }
             return result;
         }
+
+        public string UpdateProduct(int id, string name, string brand, float price, string country, string description, string material, int categoryId, int quantity)
+        {
+            string result = FAIL;
+            try
+            {
+                if (productRepository.UpdateProduct(id, name, brand, price, country, description, material, categoryId, quantity))
+                {
+                    result = SUCCESS;
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.LogExceptionToFile();
+                throw new Exception(ex.Message);
+
+
+            }
+            return result;
+        }
     }
 }
