@@ -9,5 +9,6 @@ namespace snkrshop.Repositories
     partial interface UserRepository
     {
         int LoginUser(string username, string password);
+        bool SetRole(string username, int role);
     }
 }

@@ -9,7 +9,8 @@ namespace snkrshop.Repositories
 {
     partial interface CommentRepository
     {
-        bool AddcommentToProduct(string username, string content);
+        bool AddcommentToProduct(int proId, string username, string content);
+        bool ReplyComment(int parentId, string username, string content);
         /// <summary>
         ///  load comment from newest -> oldest, pagination of post and product    
         /// </summary>
