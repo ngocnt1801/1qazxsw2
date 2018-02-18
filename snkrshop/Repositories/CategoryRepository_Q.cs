@@ -9,7 +9,7 @@ namespace snkrshop.Repositories
 {
     partial interface CategoryRepository
     {
-        bool AddCategory(string name, string descripton,int parentId);
+        bool AddCategory(Category theNewCategory);
         bool UpdateCategory(Category theEdited);
     }
 }

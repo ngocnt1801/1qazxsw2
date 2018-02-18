@@ -120,7 +120,9 @@
     <Compile Include="Models\VoucherProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoriesImplement\CategoryRepositoryImpl_N.cs" />
+    <Compile Include="RepositoriesImplement\CategoryRepositoryImpl_Q.cs" />
     <Compile Include="RepositoriesImplement\CommentRepositoryImpl_N.cs" />
+    <Compile Include="RepositoriesImplement\CommentRepositoryImpl_Q.cs" />
     <Compile Include="RepositoriesImplement\DealRepositoryImpl_N.cs" />
     <Compile Include="RepositoriesImplement\ImageRepositoryImpl_N.cs" />
     <Compile Include="RepositoriesImplement\OrderRepositoryImpl_N.cs" />
