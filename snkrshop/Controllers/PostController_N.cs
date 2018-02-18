@@ -12,11 +12,18 @@ namespace snkrshop.Controllers
     public partial class PostController : ApiController
     {
         CommentService commentService = new CommentServiceImpl();
+        PostService postService = new PostServiceImpl();
 
         [Route("post/comment/add")]
         public string AddCommentInPost(string title, string content, int postId, string authorId)
         {
             return commentService.AddCommentToPost(title, content, postId, authorId);
+        }
+
+        [Route("post/update")]
+        public string UpdatePost(int postId, string title, string content)
+        {
+            return this.postService.UpdatePost(postId, title, content);
         }
     }
 }

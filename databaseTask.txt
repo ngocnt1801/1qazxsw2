@@ -119,7 +119,7 @@ load all category sort by name	o
 load all post sort by time post	x
 add post + add image to post	o
 delete post	x
-update post	o
+update post	o	/post/update
 list all order not approved x
 approve order	o	/order/approve
 list all order sort by date	x
@@ -130,7 +130,7 @@ update deal	x
 delete deal	o	/deal/delete	
 add product discount for deal	o	/deal/product/add
 delete product discount for deal	x
-update product discount for deal	o
+update product discount for deal	o	deal/product/update
 create voucher	x
 delete voucher	o	/voucher/delete
 add product for voucher	o

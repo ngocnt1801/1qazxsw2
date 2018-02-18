@@ -9,5 +9,6 @@ namespace snkrshop.Repositories
     partial interface ProductDealRepository
     {
         bool AddProductDeal(int dealId, int productId, int discount, bool type);
+        bool UpdateProductDeal(int dealId, int productId, int discount, bool type);
     }
 }

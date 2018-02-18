@@ -478,6 +478,7 @@ GO
 
 ---------- add deal for each product -------------
 create procedure AddDealForProduct
+@DealId int
 @ProductId int,
 @Discount int,
 @Type bit

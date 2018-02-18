@@ -30,5 +30,10 @@ namespace snkrshop.Controllers
         {
             return this.dealService.AddProductDeal(dealId, productId, discount, type);
         }
+        [Route("deal/product/update")]
+        public string UpdateProductDeal(int dealId, int productId, int discount, bool type)
+        {
+            return this.dealService.UpdateProductDeal(dealId, productId, discount, type);
+        }
     }
 }

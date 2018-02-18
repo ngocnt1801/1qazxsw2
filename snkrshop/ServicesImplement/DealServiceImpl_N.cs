@@ -79,5 +79,25 @@ namespace snkrshop.ServicesImplement
             }
             return result;
         }
+
+        public string UpdateProductDeal(int dealId, int productId, int discount, bool type)
+        {
+            string result = FAIL;
+            try
+            {
+                if (productDealRepository.UpdateProductDeal(dealId, productId, discount, type))
+                {
+                    result = SUCCESS;
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.LogExceptionToFile();
+                throw new Exception(ex.Message);
+
+
+            }
+            return result;
+        }
     }
 }
