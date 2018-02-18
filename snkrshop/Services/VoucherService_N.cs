@@ -8,5 +8,6 @@ namespace snkrshop.Services
     partial interface VoucherService
     {
         string DeleteVoucher(int voucherId);
+        string AddVoucherProduct(string voucherId, int productId);
     }
 }

@@ -13,11 +13,34 @@ namespace snkrshop.ServicesImplement
     {
         const string FAIL = "fail";
         const string SUCCESS = "success";
+
         VoucherRepository voucherRepository;
+        VoucherProductRepository voucherProductRepository;
 
         public VoucherServiceImpl()
         {
             this.voucherRepository = new VoucherRepositoryImpl();
+            this.voucherProductRepository = new VoucherProductRepositoryImpl();
+        }
+
+        public string AddVoucherProduct(string voucherId, int productId)
+        {
+            string result = FAIL;
+            try
+            {
+                if (voucherProductRepository.AddVoucherProduct(voucherId, productId))
+                {
+                    result = SUCCESS;
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.LogExceptionToFile();
+                throw new Exception(ex.Message);
+
+
+            }
+            return result;
         }
 
         public string DeleteVoucher(int voucherId)
