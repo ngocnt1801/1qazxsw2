@@ -568,22 +568,26 @@ AS
 	WHERE id = @CategoryId
 GO
 
------------------- add product size ----------------------
-
-create procedure AddProductSize
-@ProductId int,
-@Size int
-AS
-	INSERT INTO tbl_product_size(productId, size)
-	VALUES(@ProductId, @Size)
-GO
---------------- delete account ----------------------
-create procedure DeteteAccount
+--------------- delete account (expired user)----------------------
+create procedure ExpiredUser
 @UserId varchar(50)
 AS
-	
+	UPDATE tbl_user
+	SET expired = 1
+	WHERE userId = @UserId
+GO
+
+--------------- get comment product ----------------
+create procedure GetProductComment
+@ProductId int
+AS
+	SELECT *
+	FROM ListAllComment
+	WHERE productId = @ProductId
 GO
 
 
 -----------DROP STORE PROCEDURE----------------
 DROP Procedure if exists AddUser
+
+
