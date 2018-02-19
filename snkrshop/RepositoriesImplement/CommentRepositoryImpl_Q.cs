@@ -98,6 +98,7 @@ namespace snkrshop.RepositoriesImplement
                         new Comment((int)reader["id"], (string)reader["title"], (string)reader["commentContent"], (DateTime)reader["time"], (int)reader["parentId"], (int)reader["productId"], (int)reader["postId"], (string)reader["authorId"])
                         );
                 }
+                result=sortList(result, sortByTime);
             }
             catch (Exception ex)
             {
@@ -115,7 +116,39 @@ namespace snkrshop.RepositoriesImplement
 
         public List<Comment> GetCommentInPost(int sortByTime, int postId)
         {
-            throw new NotImplementedException();
+            SqlConnection cnn = DBUtils.GetConnection();
+            string sql = "GetPostComment";
+            SqlCommand cmd = new SqlCommand(sql, cnn);
+            cmd.Parameters.AddWithValue("@PostId", postId);
+            cmd.CommandType = CommandType.StoredProcedure;
+            List<Comment> result = new List<Comment>();
+            try
+            {
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                }
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    result.Add(
+                        new Comment((int)reader["id"], (string)reader["title"], (string)reader["commentContent"], (DateTime)reader["time"], (int)reader["parentId"], (int)reader["productId"], (int)reader["postId"], (string)reader["authorId"])
+                        );
+                }
+                result = sortList(result, sortByTime);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (cnn.State == ConnectionState.Open)
+                {
+                    cnn.Close();
+                }
+            }
+            return result;
         }
 
         public List<Comment> GetCommentInProduct(int sortByTime, int ProductId)
@@ -155,5 +188,21 @@ namespace snkrshop.RepositoriesImplement
             return result > 0;
         }
         
+        private List<Comment> sortList(List<Comment> list,int sort)
+        {
+            List<Comment> sortedList = new List<Comment>();
+            if (sort >= 1)
+            {
+                sortedList = list.OrderBy(o => o.Time).ToList();
+            }else if(sort <= -1)
+            {
+                sortedList = list.OrderByDescending(o => o.Time).ToList();
+            }
+            else
+            {
+                sortedList = list;
+            }
+            return sortedList;
+        }
     }
 }
