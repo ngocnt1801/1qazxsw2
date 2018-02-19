@@ -1,4 +1,5 @@
-﻿using snkrshop.Services;
+﻿using snkrshop.Models;
+using snkrshop.Services;
 using snkrshop.ServicesImplement;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,12 @@ namespace snkrshop.Controllers
         public string DeleteCategory(int categoryId)
         {
             return categoryService.DeleteCategory(categoryId);
+        }
+
+        [Route("category/all")]
+        public List<Category> GetAll()
+        {
+            return this.categoryService.GetAllCategory();
         }
     }
 }

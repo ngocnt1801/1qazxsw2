@@ -601,6 +601,13 @@ AS
 	FROM tbl_user
 	WHERE userId = @Username
 GO
+---------------		get all category ----------------
+create procedure GetAllCategory
+AS
+	SELECT id, name
+	FROM tbl_category
+	ORDER BY name ASC
+GO
 
 -----------DROP STORE PROCEDURE----------------
 DROP Procedure if exists AddUser

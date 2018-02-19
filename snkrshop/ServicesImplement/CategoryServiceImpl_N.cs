@@ -1,4 +1,5 @@
-﻿using snkrshop.Repositories;
+﻿using snkrshop.Models;
+using snkrshop.Repositories;
 using snkrshop.RepositoriesImplement;
 using snkrshop.Services;
 using snkrshop.Utilities;
@@ -36,6 +37,21 @@ namespace snkrshop.ServicesImplement
                 throw new Exception(ex.Message);
             }
             return result;
+        }
+
+        public List<Category> GetAllCategory()
+        {
+           
+            try
+            {
+                return this.categoryRepository.GetAllCategory();
+            }
+            catch (Exception ex)
+            {
+                ex.LogExceptionToFile();
+                throw new Exception(ex.Message);
+            }
+            return null;
         }
     }
 }
