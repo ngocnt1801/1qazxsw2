@@ -235,6 +235,14 @@ AS
 	SELECT @DealId = SCOPE_IDENTITY()
     SELECT @DealId AS id
 GO
+--Delete Product From Deal
+CREATE PROCEDURE DeleteProductDeal
+@Id int, @ProductId int
+AS
+	DELETE
+	FROM tbl_product_deal
+	WHERE tbl_product_deal.dealId = @Id AND tbl_product_deal.productId = @ProductId
+GO
 --Delete Deal
 CREATE PROCEDURE DeleteDeal
 @Id int
