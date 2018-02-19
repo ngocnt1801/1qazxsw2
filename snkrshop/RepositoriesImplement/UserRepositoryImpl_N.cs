@@ -1,11 +1,10 @@
-﻿using snkrshop.Repositories;
+﻿using snkrshop.Models;
+using snkrshop.Repositories;
 using snkrshop.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 
 namespace snkrshop.RepositoriesImplement
 {
@@ -83,7 +82,84 @@ namespace snkrshop.RepositoriesImplement
             return result > 0;
         }
 
-   
+        public List<User> GetUserByRole(int role)
+        {
+            SqlConnection cnn = DBUtils.GetConnection();
+            string sql = "GetUserByUsername";
+            SqlCommand cmd = new SqlCommand(sql, cnn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@Username", username));
+
+            List<User> users = null;
+            try
+            {
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                }
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {   if (users == null)
+                    {
+                        users = new List<User>();
+                    }
+                    users.Add(new User((string)reader["userId"], (string)reader["email"], (string)reader["fullname"], (string)reader["address"], (string)reader["phone"], (int)reader["gender"], (int)reader["role"], (DateTime)reader["date_reg"]));
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (cnn.State == ConnectionState.Open)
+                {
+                    cnn.Close();
+                }
+            }
+
+            return users;
+        }
+
+        public User GetUserByUsername(string username)
+        {
+            SqlConnection cnn = DBUtils.GetConnection();
+            string sql = "GetUserByUsername";
+            SqlCommand cmd = new SqlCommand(sql, cnn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@Username", username));
+
+            User user = null;
+            try
+            {
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                }
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    return new User((string)reader["userId"], (string)reader["password"], (string)reader["email"], (string)reader["fullname"], (string)reader["address"], (string)reader["phone"], (int)reader["gender"], (DateTime)reader["date_reg"]);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (cnn.State == ConnectionState.Open)
+                {
+                    cnn.Close();
+                }
+            }
+
+            return user;
+        }
+
+     
         public string model()
         {
             String sql = "Select * from tbl_user";
@@ -117,6 +193,6 @@ namespace snkrshop.RepositoriesImplement
             return "nothing";
         }
 
-       
+        
     }
 }

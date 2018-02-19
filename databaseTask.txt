@@ -100,7 +100,7 @@ comment in a post detail	o	/post/comment/add
 load comment from newest -> oldest, pagination of post and product	x
 delete comment	o	/comment/delete
 edit comment	x
-load user profile	o
+load user profile	o	/user/{username}/profile
 load histotry order	x
 load status and deatil of order include products in order	o
 load product by category	x
@@ -136,7 +136,7 @@ create voucher	x
 delete voucher	o	/voucher/delete
 add product for voucher	o	/voucher/product/add
 delete product in voucher	x
-list all account by role	o
+list all account by role	o	/user/role
 set role for account	x
 delete account	o	/user/delete
 

@@ -1,4 +1,5 @@
-﻿using snkrshop.Repositories;
+﻿using snkrshop.Models;
+using snkrshop.Repositories;
 using snkrshop.RepositoriesImplement;
 using snkrshop.Services;
 using snkrshop.Utilities;
@@ -39,6 +40,35 @@ namespace snkrshop.ServicesImplement
                 ex.LogExceptionToFile();
             }
             return result;
+        }
+
+        public List<User> GetUserByRole(int role)
+        {
+            try
+            {
+                return this.userRepository.GetUserByRole(role);
+            }
+            catch (Exception ex)
+            {
+
+                ex.LogExceptionToFile();
+            }
+            return null;
+        }
+
+        public User GetUserInformation(string username)
+        {
+            
+            try
+            {
+                return this.userRepository.GetUserByUsername(username);
+            }
+            catch (Exception ex)
+            {
+                
+                ex.LogExceptionToFile();
+            }
+            return null;
         }
 
         public string Register(string username, string password, string fullname, string phone, string email, string address)

@@ -1,4 +1,5 @@
-﻿using snkrshop.Repositories;
+﻿using snkrshop.Models;
+using snkrshop.Repositories;
 using snkrshop.RepositoriesImplement;
 using snkrshop.Services;
 using snkrshop.ServicesImplement;
@@ -27,5 +28,16 @@ namespace snkrshop.Controllers
             return userService.DeleteAccount(username);
         }
 
+        [Route("user/{username}/profile")]
+        public User GetUserProfile(string username)
+        {
+            return this.userService.GetUserInformation(username);
+        }
+
+        [Route("user/role")]
+        public List<User> GetListUserInRole(int roleId)
+        {
+            return this.userService.GetUserByRole(roleId);
+        }
     }
 }

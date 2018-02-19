@@ -585,7 +585,22 @@ AS
 	FROM ListAllComment
 	WHERE productId = @ProductId
 GO
-
+---------------get user by role -----------------------
+create procedure GetUserByRole
+@Role int
+AS
+	SELECT *
+	FROM tbl_user
+	WHERE role = @Role
+GO
+---------------get user by username -----------------------
+create procedure GetUserByUsername
+@Username varchar(50)
+AS
+	SELECT *
+	FROM tbl_user
+	WHERE userId = @Username
+GO
 
 -----------DROP STORE PROCEDURE----------------
 DROP Procedure if exists AddUser
