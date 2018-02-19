@@ -95,7 +95,7 @@ filter products by discount activity, sort by rating, by price high to low and l
 rating product	x
 checkout	o
 load list post sort by timePost newest to oldest	x
-show a content of post	o
+show a content of post	o	/post/{id}
 comment in a product detail	x
 comment in a post detail	o	/post/comment/add
 load comment from newest -> oldest, pagination of post and product	x
@@ -103,7 +103,7 @@ delete comment	o	/comment/delete
 edit comment	x
 load user profile	o	/user/{username}/profile
 load histotry order	x
-load status and deatil of order include products in order	o
+load status and detail of order include products in order	o
 load product by category	x
 cancel order	o	/order/cancel
 load all poduct sort by id	x

@@ -47,6 +47,44 @@ namespace snkrshop.RepositoriesImplement
             return result > 0;
         }
 
+        
+
+        public Post GetPost(int id)
+        {
+            SqlConnection cnn = DBUtils.GetConnection();
+            string sql = "GetPostById";
+            SqlCommand cmd = new SqlCommand(sql, cnn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@Id", id));
+
+            Post user = null;
+            try
+            {
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                }
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    return new Post((int)reader["postId"], (string)reader["title"], (string)reader["content"], (DateTime)reader["timePost"], (string)reader["userId"]);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (cnn.State == ConnectionState.Open)
+                {
+                    cnn.Close();
+                }
+            }
+
+            return user;
+        }
 
         public bool UpdatePost(int postId, string title, string content)
         {

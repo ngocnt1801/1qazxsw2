@@ -60,5 +60,21 @@ namespace snkrshop.ServicesImplement
             }
             return result;
         }
+        public Post GetPost(int id)
+        {
+          
+            try
+            {
+                return postRepository.GetPost(id);
+            }
+            catch (Exception ex)
+            {
+                ex.LogExceptionToFile();
+                throw new Exception(ex.Message);
+
+
+            }
+            return null;
+        }
     }
 }

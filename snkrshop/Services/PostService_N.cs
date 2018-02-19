@@ -10,5 +10,6 @@ namespace snkrshop.Services
     {
         string UpdatePost(int postId, string title, string content);
         string AddPost(int postId, string title, string content);
+        Post GetPost(int id);
     }
 }

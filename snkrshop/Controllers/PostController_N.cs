@@ -1,4 +1,5 @@
-﻿using snkrshop.Services;
+﻿using snkrshop.Models;
+using snkrshop.Services;
 using snkrshop.ServicesImplement;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,12 @@ namespace snkrshop.Controllers
         public string AddPost(int postId, string title, string content)
         {
             return this.postService.AddPost(postId, title, content);
+        }
+
+        [Route("post/{id}")]
+        public Post GetPost(int id)
+        {
+            return this.postService.GetPost(id);
         }
     }
 }
