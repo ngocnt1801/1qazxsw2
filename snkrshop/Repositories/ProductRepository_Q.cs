@@ -15,6 +15,6 @@ namespace snkrshop.Repositories
         void RatingProduct(int productId);
         List<Product> GetProductByCategory(int categoryId);
         bool DeleteProduct(int productId);
-        bool AddProductColor(int productId, string color);//
+        bool AddProductColor(int productId, string color);
     }
 }
