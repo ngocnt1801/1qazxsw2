@@ -12,18 +12,14 @@ namespace snkrshop.Models
         public double TotalPrice { get; set; }
         public int OrderStatus { get; set; }
         public string UserId { get; set; }
-        public int GuestId { get; set; }
         public string ApprovederId { get; set; }
 
-        public Order(int orderId, DateTime orderDate, double totalPrice, int orderStatus, string userId, int guestId, string approvederId)
+        public Order(int orderId, DateTime orderDate, double totalPrice, int orderStatus)
         {
             OrderId = orderId;
             OrderDate = orderDate;
             TotalPrice = totalPrice;
             OrderStatus = orderStatus;
-            UserId = userId;
-            GuestId = guestId;
-            ApprovederId = approvederId;
         }
     }
 }

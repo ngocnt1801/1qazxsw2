@@ -21,6 +21,7 @@ Utility - Log - LogExceptionToFile
 Role
 	GetAllRole	x
 Image 
+	GetFirstImageOfProduct	o
 	GetImageOfProduct	o
 	GetImageOfPost		x
 	AddImage		o
@@ -62,6 +63,8 @@ Order
 	Cancel order(user)		o
 	Delete order (staff)		x
 	Get all order in Month, year	o
+	Get detail of order		o
+	Get list products in order	o
 Deal
 	Add deal	x
 	Add deal for each product	o
@@ -103,7 +106,7 @@ delete comment	o	/comment/delete
 edit comment	x
 load user profile	o	/user/{username}/profile
 load histotry order	x
-load status and detail of order include products in order	o
+load status and detail of order include products in order	o	/order/{username}/{orderId}
 load product by category	x
 cancel order	o	/order/cancel
 load all poduct sort by id	x

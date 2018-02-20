@@ -18,10 +18,14 @@ namespace snkrshop.ServicesImplement
         
 
         OrderRepository orderRepository;
+        OrderProductRepository orderProductRepository;
+        ImageRepository imageRepository;
 
         public OrderServiceImpl()
         {
             this.orderRepository = new OrderRepositoryImpl();
+            this.orderProductRepository = new OrderProductRepositoryImpl();
+            this.imageRepository = new ImageRepositoryImpl();
         }
 
         public string ApproveOrder(int orderId)
@@ -76,6 +80,27 @@ namespace snkrshop.ServicesImplement
                 throw new Exception(ex.Message);
             }
             return result;
+        }
+
+        public User_Order GetDetailOfOrder(int orderId, string username)
+        {
+            User_Order userOrder = null;
+
+            try
+            {
+                userOrder = orderRepository.GetOrder(orderId, username);
+                userOrder.Products = orderProductRepository.GetListProductOfOrder(orderId);
+                foreach (User_ProductOrder product in userOrder.Products)
+                {
+                    product.ImageUrl = imageRepository.GetFirstImageOfProduct(product.ProductId);
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.LogExceptionToFile();
+                throw new Exception(ex.Message);
+            }
+            return userOrder;
         }
     }
 }

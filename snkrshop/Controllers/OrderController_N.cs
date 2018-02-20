@@ -1,4 +1,5 @@
-﻿using snkrshop.Services;
+﻿using snkrshop.Models;
+using snkrshop.Services;
 using snkrshop.ServicesImplement;
 using System;
 using System.Collections.Generic;
@@ -27,5 +28,11 @@ namespace snkrshop.Controllers
         {
             return this.orderService.ApproveOrder(orderId);
         }
+        [Route("order/{username}/{orderId}")]
+        public User_Order GetOrder(string username, int orderId)
+        {
+            return this.orderService.GetDetailOfOrder(orderId, username);
+        }
+
     }
 }

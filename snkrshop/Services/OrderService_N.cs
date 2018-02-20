@@ -1,4 +1,5 @@
-﻿using System;
+﻿using snkrshop.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,5 +11,6 @@ namespace snkrshop.Services
         string DeleteOrder(int orderId);
         string CancelOrder(int orderId);
         string ApproveOrder(int orderId);
+        User_Order GetDetailOfOrder(int orderId, string username);
     }
 }
