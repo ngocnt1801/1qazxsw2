@@ -10,6 +10,6 @@ namespace snkrshop.Repositories
     partial interface VoucherRepository
     {
         bool AddVoucher(Voucher theVoucher);
-        bool DeleteProductInVoucher(int voucherId);
+        bool DeleteProductInVoucher(string voucherId, int productId);
     }
 }

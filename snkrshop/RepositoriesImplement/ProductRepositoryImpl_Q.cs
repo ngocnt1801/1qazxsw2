@@ -51,7 +51,41 @@ namespace snkrshop.RepositoriesImplement
         }
         public List<Product> GetSearchProduct(string searchString)
         {
-            
+            SqlConnection cnn = DBUtils.GetConnection();
+            string sql = "SearchProductByName";
+            SqlCommand cmd = new SqlCommand(sql, cnn);
+            cmd.Parameters.AddWithValue("@SearchValue", searchString);
+            cmd.CommandType = CommandType.StoredProcedure;
+            List<Product> result = new List<Product>();
+            try
+            {
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                }
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    result.Add(
+                            new Product((int)reader["productId"], (string)reader["name"], (string)reader["brand"], (double)reader["price"], (string)reader["brand"],
+                            (string)reader["country"], (string)reader["description"], (string)reader["material"], (int)reader["categoryID"], (int)reader["quantity"])
+                        );
+                }
+                //result = sortList(result, sortByPrice, sortById);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (cnn.State == ConnectionState.Open)
+                {
+                    cnn.Close();
+                }
+            }
+            return result;
         }
         public bool RatingProduct(int productId, string userId, int rate)
         {

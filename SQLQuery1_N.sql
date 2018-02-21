@@ -331,6 +331,22 @@ AS
 	INSERT INTO tbl_product_color(productId,color)
 	VALUES (@ProductId,@Color)
 GO
+--Add Voucher
+CREATE PROCEDURE AddVoucher
+@Id int, @type bit, @discount int, @description nvarchar(250), 
+@startTime datetime, @duration int, @amount int
+AS
+	INSERT INTO dbo.tbl_voucher(voucherId,type,discount,description,startTime,duration,amount)
+	VALUES (@Id,@type,@discount,@description,@startTime,@duration,@amount)
+GO
+--Delete Product in Voucher
+CREATE PROCEDURE DeleteProductVoucher
+@VoucherId varchar(50), @ProductId int
+AS
+	DELETE
+	FROM [tbl_voucher_product]
+	WHERE tbl_voucher_product.productId = @ProductId AND tbl_voucher_product.voucherId = @VoucherId
+GO
 ------------------NGOC --------------------------------------------------
 --------------VIEW----------------------
 CREATE VIEW [dbo].[ListAllComment]
