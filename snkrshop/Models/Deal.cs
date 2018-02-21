@@ -11,5 +11,12 @@ namespace snkrshop.Models
         public string Content { get; set; }
         public DateTime StartTime { get; set; }
         public int Duration { get; set; }
+
+        public Deal( string content, DateTime startTime, int duration)
+        {
+            Content = content;
+            StartTime = startTime;
+            Duration = duration;
+        }
     }
 }

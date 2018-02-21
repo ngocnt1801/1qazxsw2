@@ -12,10 +12,11 @@ namespace snkrshop.Models
         public string Description { get; set; }
         public int ParentId { get; set; }
 
-        public Category(int id, string name)
+        public Category(string name, string description, int parentId)
         {
-            Id = id;
             Name = name;
+            Description = description;
+            ParentId = parentId;
         }
     }
 }
