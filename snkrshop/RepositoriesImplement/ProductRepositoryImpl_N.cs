@@ -50,11 +50,6 @@ namespace snkrshop.RepositoriesImplement
             }
             return result > 0;
         }
-
-       
-
-       
-
         
         public User_Product GetProductDetail(int productId)
         {
@@ -102,7 +97,6 @@ namespace snkrshop.RepositoriesImplement
 
             return null;
         }
-
         
         public bool UpdateProduct(int id, string name, string brand, float price, string country, string description, string material, int categoryId, int quantity)
         {
@@ -142,6 +136,51 @@ namespace snkrshop.RepositoriesImplement
 
             }
             return result > 0;
+        }
+
+        public List<User_Product_Item> GetProductsSortByDiscount()
+        {
+            SqlConnection cnn = DBUtils.GetConnection();
+            string sql = "GetProductsSortByDiscount";
+            SqlCommand cmd = new SqlCommand(sql, cnn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            List<User_Product_Item> products = null;
+            try
+            {
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                }
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (products == null)
+                    {
+                        products = new List<User_Product_Item>();
+                    }
+                    products.Add(new User_Product_Item((int)reader["productId"],
+                                                        (string)reader["name"],
+                                                        (float)reader["price"],
+                                                        (int)reader["discount"],
+                                                        (DateTime)reader["startTime"],
+                                                        (bool)reader["type"]));
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (cnn.State == ConnectionState.Open)
+                {
+                    cnn.Close();
+                }
+            }
+
+            return products;
         }
 
     }
