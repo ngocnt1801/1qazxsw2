@@ -1,4 +1,5 @@
-﻿using System;
+﻿using snkrshop.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,5 +12,6 @@ namespace snkrshop.Services
         string AddProductSize(int productId, int size);
         string AddProduct(string name, string brand, float price, string country, string description, string material, int categoryId, int quantity);
         string UpdateProduct(int id, string name, string brand, float price, string country, string description, string material, int categoryId, int quantity);
+        User_Product GetProdctDetail(int productId);
     }
 }

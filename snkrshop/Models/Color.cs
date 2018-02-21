@@ -9,5 +9,11 @@ namespace snkrshop.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public Color(int id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
     }
 }

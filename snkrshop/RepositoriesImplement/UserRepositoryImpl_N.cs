@@ -85,10 +85,10 @@ namespace snkrshop.RepositoriesImplement
         public List<User> GetUserByRole(int role)
         {
             SqlConnection cnn = DBUtils.GetConnection();
-            string sql = "GetUserByUsername";
+            string sql = "GetUserByRole";
             SqlCommand cmd = new SqlCommand(sql, cnn);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add(new SqlParameter("@Username", username));
+            cmd.Parameters.Add(new SqlParameter("@Role", role));
 
             List<User> users = null;
             try

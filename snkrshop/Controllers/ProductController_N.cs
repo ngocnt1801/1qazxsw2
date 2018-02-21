@@ -1,4 +1,5 @@
-﻿using snkrshop.Services;
+﻿using snkrshop.Models;
+using snkrshop.Services;
 using snkrshop.ServicesImplement;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,12 @@ namespace snkrshop.Controllers
         public string Update(int id, string name, string brand, float price, string country, string description, string material, int categoryId, int quantity)
         {
             return this.productService.UpdateProduct(id, name, brand, price, country, description, material, categoryId, quantity);
+        }
+
+        [Route("product/{productId}")]
+        public User_Product GetDetail(int productId)
+        {
+            return this.productService.GetProdctDetail(productId);
         }
     }
 }

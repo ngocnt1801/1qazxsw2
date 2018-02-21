@@ -1,4 +1,5 @@
-﻿using snkrshop.Repositories;
+﻿using snkrshop.Models;
+using snkrshop.Repositories;
 using snkrshop.RepositoriesImplement;
 using snkrshop.Services;
 using snkrshop.Utilities;
@@ -17,12 +18,15 @@ namespace snkrshop.ServicesImplement
         ImageRepository imageRepository;
         ProductSizeRepository productSizeRepository;
         ProductRepository productRepository;
+        ProductColorRepository productColorRepository;
 
         public ProductServiceImpl()
         {
             this.imageRepository = new ImageRepositoryImpl();
             this.productSizeRepository = new ProductSizeRepositoryImpl();
             this.productRepository = new ProductRepositoryImpl();
+            this.productColorRepository = new ProductColorRepositoryImpl();
+
         }
 
         public string AddProduct(string name, string brand, float price, string country, string description, string material, int categoryId, int quantity)
@@ -83,6 +87,25 @@ namespace snkrshop.ServicesImplement
                 
             }
             return result;
+        }
+
+        public User_Product GetProdctDetail(int productId)
+        {
+            try
+            {
+                User_Product product = productRepository.GetProductDetail(productId);
+                product.Colors = productColorRepository.GetProductColor(product.ProductId);
+                product.Sizes = productSizeRepository.GetProductSize(product.ProductId);
+                return product;
+            }
+            catch (Exception ex)
+            {
+                ex.LogExceptionToFile();
+                throw new Exception(ex.Message);
+
+
+            }
+            return null;
         }
 
         public string UpdateProduct(int id, string name, string brand, float price, string country, string description, string material, int categoryId, int quantity)

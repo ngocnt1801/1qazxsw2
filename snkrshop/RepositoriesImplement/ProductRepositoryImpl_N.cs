@@ -51,6 +51,59 @@ namespace snkrshop.RepositoriesImplement
             return result > 0;
         }
 
+       
+
+       
+
+        
+        public User_Product GetProductDetail(int productId)
+        {
+            SqlConnection cnn = DBUtils.GetConnection();
+            string sql = "GetProductDetail";
+            SqlCommand cmd = new SqlCommand(sql, cnn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@ProductId", productId));
+
+            try
+            {
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                }
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    return new User_Product((int)reader["productId"],
+                                            (string)reader["name"],
+                                            (string)reader["brand"],
+                                            (float)reader["price"],
+                                            (string)reader["country"],
+                                            (string)reader["description"],
+                                            (string)reader["material"],
+                                            (int)reader["quantity"],
+                                            (int)reader["discount"],
+                                            (bool)reader["type"],
+                                            (DateTime)reader["startTime"],
+                                            (int)reader["duration"]);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (cnn.State == ConnectionState.Open)
+                {
+                    cnn.Close();
+                }
+            }
+
+            return null;
+        }
+
+        
         public bool UpdateProduct(int id, string name, string brand, float price, string country, string description, string material, int categoryId, int quantity)
         {
             SqlConnection cnn = DBUtils.GetConnection();

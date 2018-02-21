@@ -674,6 +674,31 @@ AS
 	WHERE productId = @ProductId
 GO
 
+--------------get detail of product -------------------------
+create procedure GetProductDetail
+@ProductId int
+AS
+	SELECT *
+	FROM ProductDetail
+	WHERE productId = @ProductId
+GO
+
+------------get size of product -------------------
+create procedure GetProductSize
+@ProductId int
+AS
+	SELECT *
+	FROM ProducSize
+	WHERE productId = @ProductId
+GO
+------------get color of product -----------------
+create procedure GetProductColor
+@ProductId int
+AS
+	SELECT *
+	FROM ProductColor
+	WHERE productId = @ProductId
+GO
 -----------DROP STORE PROCEDURE----------------
 DROP Procedure if exists AddUser
 
