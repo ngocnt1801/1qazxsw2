@@ -12,5 +12,6 @@ namespace snkrshop.Services
         string CancelOrder(int orderId);
         string ApproveOrder(int orderId);
         User_Order GetDetailOfOrder(int orderId, string username);
+        string Checkout(string userId, float totalPrice, ProductQuantity[] products, string voucher);
     }
 }

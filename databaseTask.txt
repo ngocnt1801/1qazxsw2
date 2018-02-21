@@ -65,6 +65,8 @@ Order
 	Get all order in Month, year	o
 	Get detail of order		o
 	Get list products in order	o
+	add product order	o
+	add product voucher	o
 Deal
 	Add deal	x
 	Add deal for each product	o
@@ -96,7 +98,7 @@ show detail a product include product information, list color, list size list im
 search product by name	x
 filter products by discount activity, sort by rating, by price high to low and low to high	o
 rating product	x
-checkout	o
+checkout	o	/order/{username}/checkout
 load list post sort by timePost newest to oldest	x
 show a content of post	o	/post/{id}
 comment in a product detail	x

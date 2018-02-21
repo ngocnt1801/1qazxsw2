@@ -34,5 +34,12 @@ namespace snkrshop.Controllers
             return this.orderService.GetDetailOfOrder(orderId, username);
         }
 
+        [Route("order/{username}/checkout")]
+        [HttpPost]
+        public String Checkout(string username, float totalPrice, ProductQuantity[] products, string voucher)
+        {
+            return this.orderService.Checkout(username, totalPrice, products, voucher);
+        }
+
     }
 }

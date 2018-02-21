@@ -9,5 +9,6 @@ namespace snkrshop.Repositories
     partial interface OrderProductRepository
     {
         List<User_ProductOrder> GetListProductOfOrder(int orderId);
+        bool AddProductOrder(int orderId, int productId, int quantity);
     }
 }

@@ -19,12 +19,14 @@ namespace snkrshop.ServicesImplement
 
         OrderRepository orderRepository;
         OrderProductRepository orderProductRepository;
+        OrderVoucherRepository orderVoucherRepository;
         ImageRepository imageRepository;
 
         public OrderServiceImpl()
         {
             this.orderRepository = new OrderRepositoryImpl();
             this.orderProductRepository = new OrderProductRepositoryImpl();
+            this.orderVoucherRepository = new OrderVoucherRepositoryImpl();
             this.imageRepository = new ImageRepositoryImpl();
         }
 
@@ -59,6 +61,34 @@ namespace snkrshop.ServicesImplement
             catch (Exception ex)
             {
                 ex.LogExceptionToFile();
+                throw new Exception(ex.Message);
+            }
+            return result;
+        }
+
+        public string Checkout(string userId, float totalPrice, ProductQuantity[] products, string voucher)
+        {
+            string result = FAIL;
+            try
+            {
+                int orderId = orderRepository.AddOrder(userId, totalPrice);
+                if (orderVoucherRepository.AddOrderVoucher(orderId, voucher))
+                {
+                    
+                        foreach (ProductQuantity product in products)
+                        {
+                            orderProductRepository.AddProductOrder(orderId, product.ProductId, product.Quantity);
+                            result = SUCCESS;
+                        }
+
+                    
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                ex.LogExceptionToFile();
+                result = FAIL;
                 throw new Exception(ex.Message);
             }
             return result;
