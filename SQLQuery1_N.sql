@@ -737,6 +737,13 @@ AS
 	WHERE name like '%'+@SearchValue + '%'
 	ORDER BY name asc
 GO
+----------------- get list product sort by discount ---------------
+create procedure GetProductsSortByDiscount
+AS
+	SELECT *
+	FROM ListProductWithDeal
+	ORDER BY discount DESC
+GO
 -----------DROP STORE PROCEDURE----------------
 DROP Procedure if exists AddUser
 
