@@ -12,7 +12,7 @@ namespace snkrshop.RepositoriesImplement
 {
     public partial class ProductRepositoryImpl : ProductRepository
     {
-        public List<Product> GetListProduct(bool sortByDiscount, bool sortByPrice, bool sortById)
+        public List<Product> GetListProduct( int sortByPrice, int sortById)
         {
             SqlConnection cnn = DBUtils.GetConnection();
             string sql = "View_AllProduct";
@@ -33,6 +33,7 @@ namespace snkrshop.RepositoriesImplement
                             (string)reader["country"], (string)reader["description"], (string)reader["material"], (int)reader["categoryID"], (int)reader["quantity"])
                         );
                 }
+                result = sortList(result, sortByPrice, sortById);
 
             }
             catch (Exception ex)
@@ -183,21 +184,49 @@ namespace snkrshop.RepositoriesImplement
             return result > 0;
         }
 
-        private List<Product> sortList(List<Product> list, int sort)
+        private List<Product> sortList(List<Product> list, int sortByPrice, int sortById)
         {
-            List<Order> sortedList = new List<Order>();
-            if (sort >= 1)
+            List<Product> sortedList = new List<Product>();
+            //sort by Id
+            if (sortById >= 1)
             {
-                sortedList = list.OrderBy(o => o.OrderDate).ToList();
+                sortedList = list.OrderBy(o => o.ProductId).ToList();
             }
-            else if (sort <= -1)
+            else if (sortById <= -1)
             {
-                sortedList = list.OrderByDescending(o => o.OrderDate).ToList();
+                sortedList = list.OrderByDescending(o => o.ProductId).ToList();
             }
             else
             {
                 sortedList = list;
             }
+            //sort by price
+            if (sortByPrice >= 1)
+            {
+                sortedList = list.OrderBy(o => o.Price).ToList();
+            }
+            else if (sortByPrice <= -1)
+            {
+                sortedList = list.OrderByDescending(o => o.Price).ToList();
+            }
+            else
+            {
+                sortedList = list;
+            }
+            //sort by Discount - not ready
+            //if (sortByDiscount >= 1)
+            //{
+            //    sortedList = list.OrderBy(o => o.dis).ToList();
+            //}
+            //else if (sortByDiscount <= -1)
+            //{
+            //    sortedList = list.OrderByDescending(o => o.Price).ToList();
+            //}
+            //else
+            //{
+            //    sortedList = list;
+            //}
+
             return sortedList;
         }
     }
