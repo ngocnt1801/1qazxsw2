@@ -699,6 +699,15 @@ AS
 	FROM ProductColor
 	WHERE productId = @ProductId
 GO
+--------------- search product by name ---------------
+create procedure SearchProductByName
+@SearchValue nvarchar(250)
+AS
+	SELECT *
+	FROM ListProductWithDeal
+	WHERE name like '%'+@SearchValue + '%'
+	ORDER BY name asc
+GO
 -----------DROP STORE PROCEDURE----------------
 DROP Procedure if exists AddUser
 
