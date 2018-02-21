@@ -12,7 +12,7 @@ namespace snkrshop.Repositories
     {
         List<Product> GetListProduct(bool sortByDiscount, bool sortByPrice, bool sortById);
         List<Product> GetSearchProduct(string searchString);
-        void RatingProduct(int productId);
+        bool RatingProduct(int productId, string userId, int rate);
         List<Product> GetProductByCategory(int categoryId);
         bool DeleteProduct(int productId);
         bool AddProductColor(int productId, string color);

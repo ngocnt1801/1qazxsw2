@@ -201,12 +201,11 @@ AS
 GO	
 --Add order
 CREATE PROCEDURE AddOrder
-@TotalPrice money, 
-@UserId varchar(50), 
+@TotalPrice money, @Status int, @UserId varchar(50), @guestId int,
 @OrderId int OUTPUT
 AS
-	INSERT INTO tbl_order(date,totalPrice,status,userId)
-	VALUES (GETDATE(), @TotalPrice, 1, @UserId) --------not approve --------------
+	INSERT INTO tbl_order(date,totalPrice,status,userId,guestId)
+	VALUES (GETDATE(), @TotalPrice, @Status, @UserId, @guestId)
 	SELECT @OrderId = SCOPE_IDENTITY()
     SELECT @OrderId AS id
 GO
@@ -224,7 +223,7 @@ CREATE PROCEDURE DeleteOrder
 AS
 	select *
 	FROM tbl_order
-	WHERE orderId = @Id
+	WHERE tbl_order.id = @Id
 GO
 --Add deal
 CREATE PROCEDURE AddDeal
@@ -235,6 +234,14 @@ AS
 	VALUES (@DealContent,@StartTime,@Duration)
 	SELECT @DealId = SCOPE_IDENTITY()
     SELECT @DealId AS id
+GO
+--Delete Product From Deal
+CREATE PROCEDURE DeleteProductDeal
+@Id int, @ProductId int
+AS
+	DELETE
+	FROM tbl_product_deal
+	WHERE tbl_product_deal.dealId = @Id AND tbl_product_deal.productId = @ProductId
 GO
 --Delete Deal
 CREATE PROCEDURE DeleteDeal
@@ -301,6 +308,28 @@ AS
 		dbo.tbl_category.description=@Description,
 		dbo.tbl_category.parentId=@ParentId
 	WHERE dbo.tbl_category.id=@Id
+GO
+--Rating Product
+CREATE PROCEDURE RatingProduct
+@ProductId int, @Rate int, @UserId varchar(50)
+AS
+	INSERT INTO tbl_rating(productId,rate,userId)
+	VALUES (@ProductId,@Rate,@UserId)
+GO
+--Get Product By Gategory
+CREATE PROCEDURE ProductListByCategory
+@CategoryId int
+AS
+SELECT *
+FROM dbo.tbl_product
+WHERE dbo.tbl_product.categoryID = @CategoryId
+GO
+--Add Product Color
+CREATE PROCEDURE AddProductColor
+@ProductId int, @Color nvarchar(50)
+AS
+	INSERT INTO tbl_product_color(productId,color)
+	VALUES (@ProductId,@Color)
 GO
 ------------------NGOC --------------------------------------------------
 --------------VIEW----------------------
