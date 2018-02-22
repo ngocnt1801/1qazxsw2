@@ -1,4 +1,5 @@
-﻿using snkrshop.Repositories;
+﻿using snkrshop.Models;
+using snkrshop.Repositories;
 using snkrshop.RepositoriesImplement;
 using snkrshop.Services;
 using snkrshop.Utilities;
@@ -45,12 +46,48 @@ namespace snkrshop.ServicesImplement
             }
             return result;
         }
-        //List<Comment> GetCommentInComment(int sortByTime, int parentId)
-        //{
-
-        //}
-        //List<Comment> GetCommentInPost(int sortByTime, int postId);
-        //List<Comment> GetCommentInProduct(int sortByTime, int ProductId);
+        public List<Comment> GetCommentInComment(int sortByTime, int parentId)
+        {
+            List<Comment> result = null;
+            try
+            {
+                result = commentRepository.GetCommentInComment(sortByTime, parentId);
+            }
+            catch (Exception ex)
+            {
+                ex.LogExceptionToFile();
+                throw new Exception(ex.Message);
+            }
+            return result;
+        }
+        public List<Comment> GetCommentInPost(int sortByTime, int postId)
+        {
+            List<Comment> result = null;
+            try
+            {
+                result = commentRepository.GetCommentInPost(sortByTime, postId);
+            }
+            catch (Exception ex)
+            {
+                ex.LogExceptionToFile();
+                throw new Exception(ex.Message);
+            }
+            return result;
+        }
+        public List<Comment> GetCommentInProduct(int sortByTime, int ProductId)
+        {
+            List<Comment> result = null;
+            try
+            {
+                result = commentRepository.GetCommentInPost(sortByTime, postId);
+            }
+            catch (Exception ex)
+            {
+                ex.LogExceptionToFile();
+                throw new Exception(ex.Message);
+            }
+            return result;
+        }
         public string EditComment(int commentId, string title, string content)
         {
             string result = FAIL;
