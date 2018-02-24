@@ -14,5 +14,16 @@ namespace snkrshop.Models
         public DateTime StartTime { get; set; }
         public int Duration { get; set; }
         public int Amount { get; set; }
+
+        public Voucher(string voucherId, bool type, int discount, string description, DateTime startTime, int duration, int amount)
+        {
+            VoucherId = voucherId;
+            Type = type;
+            Discount = discount;
+            Description = description;
+            StartTime = startTime;
+            Duration = duration;
+            Amount = amount;
+        }
     }
 }

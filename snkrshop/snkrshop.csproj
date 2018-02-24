@@ -94,10 +94,15 @@
     <Compile Include="Controllers\DealController_N.cs" />
     <Compile Include="Controllers\DealController_Q.cs" />
     <Compile Include="Controllers\OrderController_N.cs" />
+    <Compile Include="Controllers\OrderController_Q.cs" />
     <Compile Include="Controllers\PostController_N.cs" />
+    <Compile Include="Controllers\PostController_Q.cs" />
     <Compile Include="Controllers\ProductController_N.cs" />
+    <Compile Include="Controllers\ProductController_Q.cs" />
     <Compile Include="Controllers\UserController_N.cs" />
+    <Compile Include="Controllers\UserController_Q.cs" />
     <Compile Include="Controllers\VoucherController_N.cs" />
+    <Compile Include="Controllers\VoucherController_Q.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -183,10 +188,15 @@
     <Compile Include="ServicesImplement\DealServiceImpl_N.cs" />
     <Compile Include="ServicesImplement\DealServiceImpl_Q.cs" />
     <Compile Include="ServicesImplement\OrderServiceImpl_N.cs" />
+    <Compile Include="ServicesImplement\OrderServiceImpl_Q.cs" />
     <Compile Include="ServicesImplement\PostServiceImpl_N.cs" />
+    <Compile Include="ServicesImplement\PostServiceImpl_Q.cs" />
     <Compile Include="ServicesImplement\ProductServiceImpl_N.cs" />
+    <Compile Include="ServicesImplement\ProductServiceImpl_Q.cs" />
     <Compile Include="ServicesImplement\UserServiceImpl_N.cs" />
+    <Compile Include="ServicesImplement\UserServiceImpl_Q.cs" />
     <Compile Include="ServicesImplement\VoucherServiceImpl_N.cs" />
+    <Compile Include="ServicesImplement\VoucherServiceImpl_Q.cs" />
     <Compile Include="Services\CategoryService_N.cs" />
     <Compile Include="Services\CategoryService_Q.cs" />
     <Compile Include="Services\CommentService_N.cs" />
@@ -194,10 +204,15 @@
     <Compile Include="Services\DealService_N.cs" />
     <Compile Include="Services\DealService_Q.cs" />
     <Compile Include="Services\OrderService_N.cs" />
+    <Compile Include="Services\OrderService_Q.cs" />
     <Compile Include="Services\PostService_N.cs" />
+    <Compile Include="Services\PostService_Q.cs" />
     <Compile Include="Services\ProductService_N.cs" />
+    <Compile Include="Services\ProductService_Q.cs" />
     <Compile Include="Services\UserService_N.cs" />
+    <Compile Include="Services\UserService_Q.cs" />
     <Compile Include="Services\VoucherService_N.cs" />
+    <Compile Include="Services\VoucherService_Q.cs" />
     <Compile Include="Utilities\DBUtils.cs" />
     <Compile Include="Utilities\Log.cs" />
   </ItemGroup>
