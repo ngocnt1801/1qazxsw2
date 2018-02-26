@@ -52,7 +52,7 @@ namespace snkrshop.RepositoriesImplement
             cmd.Parameters.AddWithValue("@Id", theEdited.Id);
             cmd.Parameters.AddWithValue("@Name", theEdited.Name);
             cmd.Parameters.AddWithValue("@Description", theEdited.Description);
-            cmd.Parameters.AddWithValue("@ParentId", theEdited.p);
+            cmd.Parameters.AddWithValue("@ParentId", theEdited.ParentId);
             cmd.CommandType = CommandType.StoredProcedure;
             int result;
             try

@@ -79,7 +79,7 @@ namespace snkrshop.RepositoriesImplement
                 }
             }
 
-            return users;
+            return categories;
         }
     }
 }

@@ -105,7 +105,6 @@ namespace snkrshop.ServicesImplement
 
 
             }
-            return null;
         }
 
         public string UpdateProduct(int id, string name, string brand, float price, string country, string description, string material, int categoryId, int quantity)

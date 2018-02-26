@@ -51,7 +51,6 @@ namespace snkrshop.ServicesImplement
                 ex.LogExceptionToFile();
                 throw new Exception(ex.Message);
             }
-            return null;
         }
     }
 }

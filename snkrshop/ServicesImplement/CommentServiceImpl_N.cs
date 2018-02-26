@@ -25,7 +25,7 @@ namespace snkrshop.ServicesImplement
             string result = FAIL;
             try
             {
-                if (commentRepository.AddCommentToPost(title, content, postId, authorId)
+                if (commentRepository.AddCommentToPost(title, content, postId, authorId))
                 {
                     result = SUCCESS;
                 }

@@ -1,4 +1,5 @@
-﻿using snkrshop.Repositories;
+﻿using snkrshop.Models;
+using snkrshop.Repositories;
 using snkrshop.RepositoriesImplement;
 using snkrshop.Services;
 using snkrshop.Utilities;
@@ -74,7 +75,7 @@ namespace snkrshop.ServicesImplement
 
 
             }
-            return null;
+            
         }
     }
 }

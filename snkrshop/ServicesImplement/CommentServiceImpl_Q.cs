@@ -74,12 +74,12 @@ namespace snkrshop.ServicesImplement
             }
             return result;
         }
-        public List<Comment> GetCommentInProduct(int sortByTime, int ProductId)
+        public List<Comment> GetCommentInProduct(int sortByTime, int productId)
         {
             List<Comment> result = null;
             try
             {
-                result = commentRepository.GetCommentInPost(sortByTime, postId);
+                result = commentRepository.GetCommentInPost(sortByTime, productId);
             }
             catch (Exception ex)
             {

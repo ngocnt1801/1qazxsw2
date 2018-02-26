@@ -9,7 +9,7 @@ namespace snkrshop.ServicesImplement
 {
     public partial class VoucherServiceImpl : VoucherService
     {
-        string AddVoucher(string voucherId, bool type, int discount, string description, DateTime startTime, int duration, int amount)
+        public string AddVoucher(string voucherId, bool type, int discount, string description, DateTime startTime, int duration, int amount)
         {
             string result = FAIL;
             try
@@ -28,7 +28,7 @@ namespace snkrshop.ServicesImplement
             }
             return result;
         }
-        string DeleteProductInVoucher(string voucherId, int productId)
+        public string DeleteProductInVoucher(string voucherId, int productId)
         {
             string result = FAIL;
             try

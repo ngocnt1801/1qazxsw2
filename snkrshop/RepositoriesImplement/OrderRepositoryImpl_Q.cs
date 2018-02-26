@@ -12,7 +12,7 @@ namespace snkrshop.RepositoriesImplement
 {
     public partial class OrderRepositoryImpl : OrderRepository
     {
-        List<Order> GetOrderHistory(string userId)
+        public List<Order> GetOrderHistory(string userId)
         {
             SqlConnection cnn = DBUtils.GetConnection();
             string sql = "GetCommentOfComment";
@@ -52,7 +52,7 @@ namespace snkrshop.RepositoriesImplement
             }
             return result;
         }
-        List<Order> GetOrdersNotApproved()
+        public List<Order> GetOrdersNotApproved()
         {
             SqlConnection cnn = DBUtils.GetConnection();
             string sql = "View_OrderNotApproved";
@@ -92,7 +92,7 @@ namespace snkrshop.RepositoriesImplement
         /// </summary>
         /// <param name="sortByTime">1 to Ascending, 0 to no-sort, -1 to descending</param>
         /// <returns></returns>
-        List<Order> GetListOrder(int sortByTime)
+        public List<Order> GetListOrder(int sortByTime)
         {
             SqlConnection cnn = DBUtils.GetConnection();
             string sql = "View_AllOrder";

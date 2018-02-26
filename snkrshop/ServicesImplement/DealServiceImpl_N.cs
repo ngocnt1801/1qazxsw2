@@ -21,6 +21,7 @@ namespace snkrshop.ServicesImplement
         public DealServiceImpl()
         {
             this.dealRepository = new DealRepositoryImpl();
+            this.productDealRepository = new ProductDealRepositoryImpl();
         }
 
         public int AddDeal(string content, DateTime startTime, int duration)
@@ -37,7 +38,6 @@ namespace snkrshop.ServicesImplement
 
                
             }
-            return INT_FAIL;
         }
 
         public string AddProductDeal(int dealId, int productId, int discount, bool type)

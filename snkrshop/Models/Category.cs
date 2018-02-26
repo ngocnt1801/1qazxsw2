@@ -18,5 +18,11 @@ namespace snkrshop.Models
             Description = description;
             ParentId = parentId;
         }
+
+        public Category(int id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
     }
 }
