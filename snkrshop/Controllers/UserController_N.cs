@@ -23,18 +23,21 @@ namespace snkrshop.Controllers
         }
 
         [Route("user/delete")]
+        [HttpGet]
         public string DeleteUser(string username)
         {
             return userService.DeleteAccount(username);
         }
 
         [Route("user/{username}/profile")]
+        [HttpGet]
         public User GetUserProfile(string username)
         {
             return this.userService.GetUserInformation(username);
         }
 
         [Route("user/role")]
+        [HttpGet]
         public List<User> GetListUserInRole(int roleId)
         {
             return this.userService.GetUserByRole(roleId);

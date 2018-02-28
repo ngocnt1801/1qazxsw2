@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Web;
 
 namespace snkrshop.Models
 {
+    [DataContract]
     public class User_ProductColor
     {
+        [DataMember]
         public int ProductId { get; set; }
+        [DataMember]
         public int ColorId { get; set; }
+        [DataMember]
         public string ColorName { get; set; }
 
         public User_ProductColor()

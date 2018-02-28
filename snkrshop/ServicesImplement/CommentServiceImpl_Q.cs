@@ -79,11 +79,11 @@ namespace snkrshop.ServicesImplement
             List<Comment> result = null;
             try
             {
-                result = commentRepository.GetCommentInPost(sortByTime, productId);
+                result = commentRepository.GetCommentInProduct(sortByTime, productId);
             }
             catch (Exception ex)
             {
-                ex.LogExceptionToFile();
+                //ex.LogExceptionToFile();
                 throw new Exception(ex.Message);
             }
             return result;
@@ -100,7 +100,7 @@ namespace snkrshop.ServicesImplement
             }
             catch (Exception ex)
             {
-                ex.LogExceptionToFile();
+                //ex.LogExceptionToFile();
                 throw new Exception(ex.Message);
             }
             return result;

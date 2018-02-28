@@ -95,7 +95,7 @@ namespace snkrshop.RepositoriesImplement
                 while (reader.Read())
                 {
                     result.Add(
-                        new Comment((int)reader["id"], (string)reader["title"], (string)reader["commentContent"], (DateTime)reader["time"], (int)reader["parentId"], (int)reader["productId"], (int)reader["postId"], (string)reader["authorId"])
+                        new Comment((int)reader["id"], (string)reader["title"], (string)reader["commentContent"], (DateTime)reader["time"], (int)reader["parentId"], (string)reader["authorId"])
                         );
                 }
                 result=sortList(result, sortByTime);
@@ -131,8 +131,13 @@ namespace snkrshop.RepositoriesImplement
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
+                    int id = (int)reader["id"];
+                    string title = (string)reader["title"];
+                    string content = (string)reader["commentContent"];
+                    DateTime time = (DateTime)reader["time"];
+                    string authorId = (string)reader["authorId"];
                     result.Add(
-                        new Comment((int)reader["id"], (string)reader["title"], (string)reader["commentContent"], (DateTime)reader["time"], (int)reader["parentId"], (int)reader["productId"], (int)reader["postId"], (string)reader["authorId"])
+                        new Comment(id, title, content, time, authorId)
                         );
                 }
                 result = sortList(result, sortByTime);
@@ -151,12 +156,12 @@ namespace snkrshop.RepositoriesImplement
             return result;
         }
 
-        public List<Comment> GetCommentInProduct(int sortByTime, int ProductId)
+        public List<Comment> GetCommentInProduct(int sortByTime, int productId)
         {
             SqlConnection cnn = DBUtils.GetConnection();
             string sql = "GetProductComment";
             SqlCommand cmd = new SqlCommand(sql, cnn);
-            cmd.Parameters.AddWithValue("@ProductId", ProductId);
+            cmd.Parameters.AddWithValue("@ProductId", productId);
             cmd.CommandType = CommandType.StoredProcedure;
             List<Comment> result = new List<Comment>();
             try
@@ -168,8 +173,13 @@ namespace snkrshop.RepositoriesImplement
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
+                    int id = (int)reader["id"];
+                    string title = (string)reader["title"];
+                    string content = (string)reader["commentContent"];
+                    DateTime time = (DateTime)reader["time"];
+                    string authorId = (string)reader["authorId"];
                     result.Add(
-                        new Comment((int)reader["id"], (string)reader["title"], (string)reader["commentContent"], (DateTime)reader["time"], (int)reader["parentId"], (int)reader["productId"], (int)reader["postId"], (string)reader["authorId"])
+                        new Comment(id, title, content, time, authorId)
                         );
                 }
                 result = sortList(result, sortByTime);

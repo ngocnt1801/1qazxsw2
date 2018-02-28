@@ -46,12 +46,13 @@ namespace snkrshop.ServicesImplement
         {
             try
             {
+                Console.WriteLine("vo service roi");
                 return this.userRepository.GetUserByRole(role);
             }
             catch (Exception ex)
             {
-
-                ex.LogExceptionToFile();
+                Console.WriteLine(ex.Message);
+                //ex.LogExceptionToFile();
             }
             return null;
         }
@@ -65,8 +66,8 @@ namespace snkrshop.ServicesImplement
             }
             catch (Exception ex)
             {
-                
-                ex.LogExceptionToFile();
+                Console.WriteLine(ex.Message);
+                //ex.LogExceptionToFile();
             }
             return null;
         }

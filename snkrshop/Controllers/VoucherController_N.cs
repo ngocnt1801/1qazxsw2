@@ -14,12 +14,14 @@ namespace snkrshop.Controllers
         VoucherService voucherService = new VoucherServiceImpl();
 
         [Route("voucher/delete")]
+        [HttpGet]
         public string DeleteVoucher(int voucherId)
         {
             return this.voucherService.DeleteVoucher(voucherId);
         }
 
         [Route("voucher/product/add")]
+        [HttpPost]
         public string AddVoucherProduct(string voucherId, int productId)
         {
             return this.voucherService.AddVoucherProduct(voucherId, productId);

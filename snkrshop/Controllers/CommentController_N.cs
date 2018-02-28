@@ -14,6 +14,7 @@ namespace snkrshop.Controllers
         CommentService commentService = new CommentServiceImpl();
 
         [Route("comment/delete")]
+        [HttpGet]
         public string DeleteComment(int commentId)
         {
             return commentService.DeleteComment(commentId);

@@ -84,6 +84,7 @@ namespace snkrshop.RepositoriesImplement
 
         public List<User> GetUserByRole(int role)
         {
+            Console.WriteLine("vo service roi");
             SqlConnection cnn = DBUtils.GetConnection();
             string sql = "GetUserByRole";
             SqlCommand cmd = new SqlCommand(sql, cnn);

@@ -16,12 +16,14 @@ namespace snkrshop.Controllers
         PostService postService = new PostServiceImpl();
 
         [Route("post/comment/add")]
+        [HttpPost]
         public string AddCommentInPost(string title, string content, int postId, string authorId)
         {
             return commentService.AddCommentToPost(title, content, postId, authorId);
         }
 
         [Route("post/update")]
+        [HttpPost]
         public string UpdatePost(int postId, string title, string content)
         {
             return this.postService.UpdatePost(postId, title, content);
@@ -35,6 +37,7 @@ namespace snkrshop.Controllers
         }
 
         [Route("post/{id}")]
+        [HttpGet]
         public Post GetPost(int id)
         {
             return this.postService.GetPost(id);

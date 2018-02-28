@@ -10,17 +10,19 @@ using System.Web.Http;
 
 namespace snkrshop.Controllers
 {
-    public partial class CategoryController_N : ApiController
+    public partial class CategoryController : ApiController
     {
         CategoryService categoryService = new CategoryServiceImpl();
 
         [Route("category/delete")]
+        [HttpGet]
         public string DeleteCategory(int categoryId)
         {
             return categoryService.DeleteCategory(categoryId);
         }
 
         [Route("category/all")]
+        [HttpGet]
         public List<Category> GetAll()
         {
             return this.categoryService.GetAllCategory();

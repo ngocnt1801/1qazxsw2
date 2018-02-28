@@ -6,7 +6,7 @@ using System.Web.Http;
 
 namespace snkrshop.Controllers
 {
-    public partial class CategoryController_N : ApiController
+    public partial class CategoryController : ApiController
     {
         [Route("category/add")]
         [HttpPost]
@@ -15,6 +15,7 @@ namespace snkrshop.Controllers
             return categoryService.AddCategory(name, description, parentId);
         }
         [Route("category/update")]
+        [HttpPost]
         public string UpdateCategory(int id, string name, string description, int parentId)
         {
             return categoryService.UpdateCategory(id, name, description, parentId);

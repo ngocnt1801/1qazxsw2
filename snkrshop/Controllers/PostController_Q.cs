@@ -10,11 +10,13 @@ namespace snkrshop.Controllers
     public partial class PostController : ApiController
     {
         [Route("post/get")]
+        [HttpGet]
         public List<Post> GetListPost(int sortTime)
         {
             return this.postService.GetListPost(sortTime);
         }
         [Route("post/delete")]
+        [HttpGet]
         public string DeletePost(int postId)
         {
             return this.postService.DeletePost(postId);

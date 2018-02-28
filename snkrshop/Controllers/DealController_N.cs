@@ -13,6 +13,7 @@ namespace snkrshop.Controllers
     {
         DealService dealService = new DealServiceImpl();
         [Route("deal/delete")]
+        [HttpGet]
         public string DeleteDeal(int dealId)
         {
             return this.dealService.DeleteDeal(dealId);
@@ -26,11 +27,13 @@ namespace snkrshop.Controllers
         }
 
         [Route("deal/product/add")]
+        [HttpPost]
         public string AddProductDeal(int dealId, int productId, int discount, bool type)
         {
             return this.dealService.AddProductDeal(dealId, productId, discount, type);
         }
         [Route("deal/product/update")]
+        [HttpPost]
         public string UpdateProductDeal(int dealId, int productId, int discount, bool type)
         {
             return this.dealService.UpdateProductDeal(dealId, productId, discount, type);

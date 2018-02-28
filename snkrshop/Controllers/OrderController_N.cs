@@ -14,21 +14,25 @@ namespace snkrshop.Controllers
         OrderService orderService = new OrderServiceImpl();
 
         [Route("order/delete")]
+        [HttpGet]
         public string DeleteOrder(int orderId)
         {
             return this.orderService.DeleteOrder(orderId);
         }
         [Route("order/cancel")]
+        [HttpGet]
         public string CancelOrder(int orderId)
         {
             return this.orderService.CancelOrder(orderId);
         }
         [Route("order/approve")]
+        [HttpGet]
         public string ApproveOrder(int orderId)
         {
             return this.orderService.ApproveOrder(orderId);
         }
         [Route("order/{username}/{orderId}")]
+        [HttpGet]
         public User_Order GetOrder(string username, int orderId)
         {
             return this.orderService.GetDetailOfOrder(orderId, username);
