@@ -1,4 +1,5 @@
-﻿using snkrshop.Repositories;
+﻿using snkrshop.Models;
+using snkrshop.Repositories;
 using snkrshop.RepositoriesImplement;
 using snkrshop.Services;
 using snkrshop.Utilities;
@@ -61,6 +62,19 @@ namespace snkrshop.ServicesImplement
 
             }
             return result;
+        }
+
+        public List<Voucher> GetAllVoucher()
+        {
+            try
+            {
+                return this.voucherRepository.GetAllVoucher();
+            }
+            catch (Exception ex)
+            {
+                ex.LogExceptionToFile();
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

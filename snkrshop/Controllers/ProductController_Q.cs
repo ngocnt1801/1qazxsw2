@@ -17,7 +17,7 @@ namespace snkrshop.Controllers
         }
         [Route("product/search")]
         [HttpGet]
-        public List<Product> GetSearchProduct(string searchString)
+        public List<User_Product_Item> GetSearchProduct(string searchString)
         {
             return productService.GetSearchProduct(searchString);
         }

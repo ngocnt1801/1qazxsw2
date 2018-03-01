@@ -16,7 +16,7 @@ namespace snkrshop.Models
         [DataMember]
         public string Brand { get; set; }
         [DataMember]
-        public float Price { get; set; }
+        public double Price { get; set; }
         [DataMember]
         public List<Size> Sizes { get; set; }
         [DataMember]
@@ -37,13 +37,15 @@ namespace snkrshop.Models
         public DateTime StartTime { get; set; }
         [DataMember]
         public int Duration { get; set; }
+        [DataMember]
+        public List<Image> Images { get; set; }
 
-        public User_Product(int productId, string name, string brand, float price, string country, string description, string material, int quantity, int discount, bool type, DateTime startTime, int duration)
+        public User_Product(int productId, string name, string brand, double price, string country, string description, string material, int quantity, int discount, bool type, DateTime startTime, int duration)
         {
             ProductId = productId;
             Name = name;
             Brand = brand;
-            this.Price = price;
+            Price = price;
             Country = country;
             Description = description;
             Material = material;

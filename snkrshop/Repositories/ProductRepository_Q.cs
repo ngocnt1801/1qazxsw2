@@ -11,7 +11,7 @@ namespace snkrshop.Repositories
     partial interface ProductRepository
     {
         List<Product> GetListProduct( int sortByPrice, int sortById);
-        List<Product> GetSearchProduct(string searchString);
+        List<User_Product_Item> GetSearchProduct(string searchString);
         bool RatingProduct(int productId, string userId, int rate);
         List<Product> GetProductByCategory(int categoryId);
         bool DeleteProduct(int productId);

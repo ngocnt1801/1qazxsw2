@@ -57,7 +57,7 @@ namespace snkrshop.RepositoriesImplement
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@Id", id));
 
-            Post user = null;
+            
             try
             {
                 if (cnn.State == ConnectionState.Closed)
@@ -67,7 +67,8 @@ namespace snkrshop.RepositoriesImplement
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    return new Post((int)reader["postId"], (string)reader["title"], (string)reader["content"], (DateTime)reader["timePost"], (string)reader["userId"]);
+                    
+                    return new Post((int)reader["postId"], (string)reader["title"], (string)reader["postContent"], (DateTime)reader["timePost"], (string)reader["userId"]);
                 }
 
             }
@@ -83,7 +84,7 @@ namespace snkrshop.RepositoriesImplement
                 }
             }
 
-            return user;
+            return null;
         }
 
         public bool UpdatePost(int postId, string title, string content)

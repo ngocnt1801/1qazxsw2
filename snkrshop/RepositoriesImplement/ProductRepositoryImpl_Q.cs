@@ -49,14 +49,17 @@ namespace snkrshop.RepositoriesImplement
             }
             return result;
         }
-        public List<Product> GetSearchProduct(string searchString)
+        public List<User_Product_Item> GetSearchProduct(string searchString)
         {
             SqlConnection cnn = DBUtils.GetConnection();
             string sql = "SearchProductByName";
             SqlCommand cmd = new SqlCommand(sql, cnn);
-            cmd.Parameters.AddWithValue("@SearchValue", searchString);
+            //cmd.Parameters.AddWithValue("@SearchValue", searchString);
+            SqlParameter param = cmd.Parameters.Add("@SearchValue", SqlDbType.NVarChar);
+            param.Value = searchString;
+            
             cmd.CommandType = CommandType.StoredProcedure;
-            List<Product> result = new List<Product>();
+            List<User_Product_Item> result = new List<User_Product_Item>();
             try
             {
                 if (cnn.State == ConnectionState.Closed)
@@ -67,8 +70,12 @@ namespace snkrshop.RepositoriesImplement
                 while (reader.Read())
                 {
                     result.Add(
-                            new Product((int)reader["productId"], (string)reader["name"], (string)reader["brand"], (double)reader["price"], (string)reader["brand"],
-                            (string)reader["country"], (string)reader["description"], (string)reader["material"], (int)reader["categoryID"], (int)reader["quantity"])
+                            new User_Product_Item((int)reader["productId"],
+                                                        (string)reader["name"],
+                                                        (double)reader["price"],
+                                                        (int)reader["discount"],
+                                                        (string)reader["url"],
+                                                        (bool)reader["type"])
                         );
                 }
                 //result = sortList(result, sortByPrice, sortById);

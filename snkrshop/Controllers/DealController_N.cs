@@ -1,4 +1,5 @@
-﻿using snkrshop.Services;
+﻿using snkrshop.Models;
+using snkrshop.Services;
 using snkrshop.ServicesImplement;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,13 @@ namespace snkrshop.Controllers
         public string UpdateProductDeal(int dealId, int productId, int discount, bool type)
         {
             return this.dealService.UpdateProductDeal(dealId, productId, discount, type);
+        }
+
+        [Route("deal/all")]
+        [HttpGet]
+        public List<Deal> GetAllDeal()
+        {
+            return this.dealService.GetAllDeal();
         }
     }
 }

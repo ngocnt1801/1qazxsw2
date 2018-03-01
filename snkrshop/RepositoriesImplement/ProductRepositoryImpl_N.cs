@@ -68,18 +68,21 @@ namespace snkrshop.RepositoriesImplement
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-                    return new User_Product((int)reader["productId"],
-                                            (string)reader["name"],
-                                            (string)reader["brand"],
-                                            (float)reader["price"],
-                                            (string)reader["country"],
-                                            (string)reader["description"],
-                                            (string)reader["material"],
-                                            (int)reader["quantity"],
-                                            (int)reader["discount"],
-                                            (bool)reader["type"],
-                                            (DateTime)reader["startTime"],
-                                            (int)reader["duration"]);
+
+                    
+                    string name = (string)reader["name"];
+                    string brand = (string)reader["brand"];
+                    double price = (double)reader["price"];
+                    string country = (string)reader["country"];
+                    string description = (string)reader["description"];
+                    string material = (string)reader["material"];
+                    int quantity = (int)reader["quantity"];
+                    int discount = (int)reader["discount"];
+                    bool type = (bool)reader["type"];
+                    DateTime startTime = (DateTime)reader["startTime"];
+                    int duration = (int)reader["duration"];
+
+                    return new User_Product(productId,name,brand,price,country,description,material, quantity,discount,type,startTime,duration);
                 }
 
             }
@@ -161,9 +164,9 @@ namespace snkrshop.RepositoriesImplement
                     }
                     products.Add(new User_Product_Item((int)reader["productId"],
                                                         (string)reader["name"],
-                                                        (float)reader["price"],
+                                                        (double)reader["price"],
                                                         (int)reader["discount"],
-                                                        (DateTime)reader["startTime"],
+                                                        (string)reader["url"],
                                                         (bool)reader["type"]));
                 }
 

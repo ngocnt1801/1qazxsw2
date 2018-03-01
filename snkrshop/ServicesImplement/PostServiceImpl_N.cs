@@ -70,7 +70,7 @@ namespace snkrshop.ServicesImplement
             }
             catch (Exception ex)
             {
-                ex.LogExceptionToFile();
+                //ex.LogExceptionToFile();
                 throw new Exception(ex.Message);
 
 

@@ -9,7 +9,7 @@ namespace snkrshop.Controllers
 {
     public partial class PostController : ApiController
     {
-        [Route("post/get")]
+        [Route("post/all")]
         [HttpGet]
         public List<Post> GetListPost(int sortTime)
         {

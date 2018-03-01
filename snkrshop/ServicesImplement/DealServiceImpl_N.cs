@@ -1,4 +1,5 @@
-﻿using snkrshop.Repositories;
+﻿using snkrshop.Models;
+using snkrshop.Repositories;
 using snkrshop.RepositoriesImplement;
 using snkrshop.Services;
 using snkrshop.Utilities;
@@ -98,6 +99,19 @@ namespace snkrshop.ServicesImplement
 
             }
             return result;
+        }
+
+        public List<Deal> GetAllDeal()
+        {
+            try
+            {
+                return this.dealRepository.GetAllDeal();
+            }
+            catch (Exception ex)
+            {
+                //ex.LogExceptionToFile();
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

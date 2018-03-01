@@ -12,5 +12,6 @@ namespace snkrshop.Repositories
         bool UpdateProduct(int id, string name, string brand, float price, string country, string description, string material, int categoryId, int quantity);
         User_Product GetProductDetail(int productId);
         List<User_Product_Item> GetProductsSortByDiscount();
+        
     }
 }

@@ -24,5 +24,13 @@ namespace snkrshop.Models
             StartTime = startTime;
             Duration = duration;
         }
+
+        public Deal(int id, string content, DateTime startTime, int duration)
+        {
+            Id = id;
+            Content = content;
+            StartTime = startTime;
+            Duration = duration;
+        }
     }
 }

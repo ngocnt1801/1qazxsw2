@@ -17,5 +17,11 @@ namespace snkrshop.Models
         public int PostId { get; set; }
         [DataMember]
         public string Url { get; set; }
+
+        public Image(int id, string url)
+        {
+            Id = id;
+            Url = url;
+        }
     }
 }

@@ -19,21 +19,21 @@ namespace snkrshop.ServicesImplement
             }
             catch (Exception ex)
             {
-                ex.LogExceptionToFile();
+                //ex.LogExceptionToFile();
                 throw new Exception(ex.Message);
             }
             return result;
         }
-        public List<Product> GetSearchProduct(string searchString)
+        public List<User_Product_Item> GetSearchProduct(string searchString)
         {
-            List<Product> result = null;
+            List<User_Product_Item> result = null;
             try
             {
                 result = productRepository.GetSearchProduct(searchString);
             }
             catch (Exception ex)
             {
-                ex.LogExceptionToFile();
+                //ex.LogExceptionToFile();
                 throw new Exception(ex.Message);
             }
             return result;
@@ -50,7 +50,7 @@ namespace snkrshop.ServicesImplement
             }
             catch (Exception ex)
             {
-                ex.LogExceptionToFile();
+                //ex.LogExceptionToFile();
                 throw new Exception(ex.Message);
             }
             return result;
@@ -64,7 +64,7 @@ namespace snkrshop.ServicesImplement
             }
             catch (Exception ex)
             {
-                ex.LogExceptionToFile();
+                //ex.LogExceptionToFile();
                 throw new Exception(ex.Message);
             }
             return result;
@@ -81,7 +81,7 @@ namespace snkrshop.ServicesImplement
             }
             catch (Exception ex)
             {
-                ex.LogExceptionToFile();
+                //ex.LogExceptionToFile();
                 throw new Exception(ex.Message);
             }
             return result;

@@ -75,6 +75,7 @@ Deal
 	Get deal are activity	x
 	Get product are dealing		o
 	Get product with deal	x
+	Get all deal	o
 Voucher
 	Create voucher with voucher code inputed by staff	o
 	Add product are allow in voucher	x
@@ -145,4 +146,6 @@ delete product in voucher	x
 list all account by role	o	/user/role
 set role for account	x
 delete account	o	/user/delete
-
+Get all deal	o	/deal/all
+Get all category	o	/category/all
+Get all voucher		o	/voucher/all

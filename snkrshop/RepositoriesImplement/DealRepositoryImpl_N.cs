@@ -1,4 +1,5 @@
-﻿using snkrshop.Repositories;
+﻿using snkrshop.Models;
+using snkrshop.Repositories;
 using snkrshop.Utilities;
 using System;
 using System.Collections.Generic;
@@ -76,6 +77,47 @@ namespace snkrshop.RepositoriesImplement
 
             }
             return result > 0;
+        }
+
+        public List<Deal> GetAllDeal()
+        {
+            SqlConnection cnn = DBUtils.GetConnection();
+            string sql = "GetAllDeal";
+            SqlCommand cmd = new SqlCommand(sql, cnn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+
+            List<Deal> deals = null;
+            try
+            {
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                }
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (deals == null)
+                    {
+                        deals = new List<Deal>();
+                    }
+                    deals.Add(new Deal((int)reader["id"], (string)reader["dealContent"], (DateTime)reader["startTime"], (int)reader["duration"]));
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (cnn.State == ConnectionState.Open)
+                {
+                    cnn.Close();
+                }
+            }
+
+            return deals;
         }
     }
 }

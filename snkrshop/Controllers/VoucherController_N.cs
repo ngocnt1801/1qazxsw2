@@ -1,4 +1,5 @@
-﻿using snkrshop.Services;
+﻿using snkrshop.Models;
+using snkrshop.Services;
 using snkrshop.ServicesImplement;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,13 @@ namespace snkrshop.Controllers
         public string AddVoucherProduct(string voucherId, int productId)
         {
             return this.voucherService.AddVoucherProduct(voucherId, productId);
+        }
+
+        [Route("voucher/all")]
+        [HttpGet]
+        public List<Voucher> GetAllVoucher()
+        {
+            return this.voucherService.GetAllVoucher();
         }
     }
 }

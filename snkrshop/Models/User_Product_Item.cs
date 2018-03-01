@@ -16,18 +16,18 @@ namespace snkrshop.Models
         [DataMember]
         public int Discount { get; set; }
         [DataMember]
-        public DateTime StartTime { get; set; }
+        public string Url { get; set; }
         [DataMember]
         public bool Type { get; set; }
         [DataMember]
-        public float Price { get; set; }
-        public User_Product_Item(int productId, string name, float price, int discount, DateTime startTime, bool type)
+        public double Price { get; set; }
+        public User_Product_Item(int productId, string name, double price, int discount, string url, bool type)
         {
             ProductId = productId;
             Name = name;
             Price = price;
             Discount = discount;
-            StartTime = startTime;
+            Url = url;
             Type = type;
         }
     }

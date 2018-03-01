@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using snkrshop.Models;
 
 namespace snkrshop.RepositoriesImplement
 {
@@ -76,6 +77,45 @@ namespace snkrshop.RepositoriesImplement
 
             }
             return url;
+        }
+
+        public List<Image> GetImageOfProduct(int productId)
+        {
+            SqlConnection cnn = DBUtils.GetConnection();
+            string sql = "GetImageOfProduct";
+            SqlCommand cmd = new SqlCommand(sql, cnn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@ProductId", productId));
+
+            List<Image> productImages = null;
+            try
+            {
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                }
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (productImages == null)
+                    {
+                        productImages = new List<Image>();
+                    }
+                    productImages.Add(new Image((int)reader["imageId"], (string)reader["url"]));
+                }
+                return productImages;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (cnn.State == ConnectionState.Open)
+                {
+                    cnn.Close();
+                }
+            }
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using snkrshop.Models;
 
 namespace snkrshop.Repositories
 {
@@ -9,5 +10,6 @@ namespace snkrshop.Repositories
     {
         bool DeleteImageOfProduct(int imageId);
         string GetFirstImageOfProduct(int productId);
+        List<Image> GetImageOfProduct(int productId);
     }
 }

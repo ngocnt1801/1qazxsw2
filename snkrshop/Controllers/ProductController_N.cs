@@ -48,5 +48,12 @@ namespace snkrshop.Controllers
         {
             return this.productService.GetProdctDetail(productId);
         }
+
+        [Route("product")]
+        [HttpGet]
+        public List<User_Product_Item> GetListProductSortByDiscount()
+        {
+            return this.productService.GetAllListProduct();
+        }
     }
 }

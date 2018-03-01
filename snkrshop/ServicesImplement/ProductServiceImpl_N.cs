@@ -96,11 +96,12 @@ namespace snkrshop.ServicesImplement
                 User_Product product = productRepository.GetProductDetail(productId);
                 product.Colors = productColorRepository.GetProductColor(product.ProductId);
                 product.Sizes = productSizeRepository.GetProductSize(product.ProductId);
+                product.Images = imageRepository.GetImageOfProduct(product.ProductId); 
                 return product;
             }
             catch (Exception ex)
             {
-                ex.LogExceptionToFile();
+                //ex.LogExceptionToFile();
                 throw new Exception(ex.Message);
 
 
@@ -125,6 +126,19 @@ namespace snkrshop.ServicesImplement
 
             }
             return result;
+        }
+
+        public List<User_Product_Item> GetAllListProduct()
+        {
+            try
+            {
+               return this.productRepository.GetProductsSortByDiscount();
+            }
+            catch (Exception ex)
+            {
+                //ex.LogExceptionToFile();
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
