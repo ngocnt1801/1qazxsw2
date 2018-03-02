@@ -11,10 +11,11 @@ namespace snkrshop.Repositories
     partial interface ProductRepository
     {
         List<User_Product_Item> GetListProduct( int sortByPrice, int sortById);
-        List<User_Product_Item> GetSearchProduct(string searchString);
+        //List<User_Product_Item> GetSearchProduct(string searchString);
         bool RatingProduct(int productId, string userId, int rate);
         List<User_Product_Item> GetProductByCategory(int categoryId);
         bool DeleteProduct(int productId);
         bool AddProductColor(int productId, string color);
+        IEnumerable<User_Product_Item> SearchProduct(string searchString);
     }
 }

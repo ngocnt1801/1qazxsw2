@@ -21,6 +21,7 @@ namespace snkrshop.Models
         public bool Type { get; set; }
         [DataMember]
         public double Price { get; set; }
+        public string Tag { get; set; }
         public User_Product_Item(int productId, string name, double price, int discount, string url, bool type)
         {
             ProductId = productId;
@@ -29,6 +30,18 @@ namespace snkrshop.Models
             Discount = discount;
             Url = url;
             Type = type;
+
+        }
+
+        public User_Product_Item(int productId, string name, int discount, string url, bool type, double price, string tag)
+        {
+            ProductId = productId;
+            Name = name;
+            Discount = discount;
+            Url = url;
+            Type = type;
+            Price = price;
+            Tag = tag;
         }
     }
 }

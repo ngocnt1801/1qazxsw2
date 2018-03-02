@@ -24,20 +24,20 @@ namespace snkrshop.ServicesImplement
             }
             return result;
         }
-        public List<User_Product_Item> GetSearchProduct(string searchString)
-        {
-            List<User_Product_Item> result = null;
-            try
-            {
-                result = productRepository.GetSearchProduct(searchString);
-            }
-            catch (Exception ex)
-            {
-                //ex.LogExceptionToFile();
-                throw new Exception(ex.Message);
-            }
-            return result;
-        }
+        //public List<User_Product_Item> GetSearchProduct(string searchString)
+        //{
+        //    List<User_Product_Item> result = null;
+        //    try
+        //    {
+        //        result = productRepository.GetSearchProduct(searchString);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //ex.LogExceptionToFile();
+        //        throw new Exception(ex.Message);
+        //    }
+        //    return result;
+        //}
         public string RatingProduct(int productId, string userId, int rate)
         {
             string result = FAIL;
@@ -102,6 +102,20 @@ namespace snkrshop.ServicesImplement
                 throw new Exception(ex.Message);
             }
             return result;
+        }
+
+        public IEnumerable<User_Product_Item> SearchProduct(string searchString)
+        {
+            try
+            {
+                return productRepository.SearchProduct(searchString);
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+            return null;
         }
     }
 }

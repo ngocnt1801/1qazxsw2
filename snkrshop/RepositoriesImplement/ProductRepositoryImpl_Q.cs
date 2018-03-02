@@ -71,13 +71,24 @@ namespace snkrshop.RepositoriesImplement
                     {
                         Console.WriteLine(ex.Message);
                     }
-                    
+
+                    string tag = name;
+                    try
+                    {
+                        tag = (string)reader["tag"];
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+
                     result.Add(
-                            new User_Product_Item(productId, name, price, discount, url, type)
+                            new User_Product_Item(productId, name, discount, url, type, price, tag)
                             );
                 }
                 result = sortList(result, sortByPrice, sortById);
 
+                
             }
             catch (Exception ex)
             {
@@ -92,51 +103,67 @@ namespace snkrshop.RepositoriesImplement
             }
             return result;
         }
-        public List<User_Product_Item> GetSearchProduct(string searchString)
-        {
-            SqlConnection cnn = DBUtils.GetConnection();
-            string sql = "SearchProductByName";
-            SqlCommand cmd = new SqlCommand(sql, cnn);
-            cmd.Parameters.AddWithValue("@SearchValue", "%"+searchString+"%");
-            
-            
-            cmd.CommandType = CommandType.StoredProcedure;
-            List<User_Product_Item> result = new List<User_Product_Item>();
-            try
-            {
-                if (cnn.State == ConnectionState.Closed)
-                {
-                    cnn.Open();
-                }
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-             //       string search = (string)reader["value"];
-                    result.Add(
-                            new User_Product_Item((int)reader["productId"],
-                                                        (string)reader["name"],
-                                                        (double)reader["price"],
-                                                        (int)reader["discount"],
-                                                        (string)reader["url"],
-                                                        (bool)reader["type"])
-                        );
-                }
-                //result = sortList(result, sortByPrice, sortById);
 
-            }
-            catch (Exception ex)
+        public IEnumerable<User_Product_Item> SearchProduct(string searchString)
+        {
+            IEnumerable<User_Product_Item> products = this.GetListProduct(0,0);
+            string[] tags = searchString.Split(' ');
+            foreach (string tag in tags)
             {
-                throw new Exception(ex.Message);
+                products = from product in products
+                           where product.Tag.Contains(tag)
+                           select product;
             }
-            finally
-            {
-                if (cnn.State == ConnectionState.Open)
-                {
-                    cnn.Close();
-                }
-            }
-            return result;
+            return products;
         }
+
+        //public List<User_Product_Item> GetSearchProduct(string searchString)
+        //{
+            
+        //    SqlConnection cnn = DBUtils.GetConnection();
+        //    string sql = "SearchProductByName";
+        //    SqlCommand cmd = new SqlCommand(sql, cnn);
+        //    cmd.Parameters.AddWithValue("@SearchValue", "%"+searchString+"%");
+            
+            
+        //    cmd.CommandType = CommandType.StoredProcedure;
+        //    List<User_Product_Item> result = new List<User_Product_Item>();
+        //    try
+        //    {
+        //        if (cnn.State == ConnectionState.Closed)
+        //        {
+        //            cnn.Open();
+        //        }
+        //        SqlDataReader reader = cmd.ExecuteReader();
+        //        while (reader.Read())
+        //        {
+        //     //       string search = (string)reader["value"];
+        //            result.Add(
+        //                    new User_Product_Item((int)reader["productId"],
+        //                                                (string)reader["name"],
+        //                                                (double)reader["price"],
+        //                                                (int)reader["discount"],
+        //                                                (string)reader["url"],
+        //                                                (bool)reader["type"])
+        //                );
+        //        }
+        //        //result = sortList(result, sortByPrice, sortById);
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception(ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        if (cnn.State == ConnectionState.Open)
+        //        {
+        //            cnn.Close();
+        //        }
+        //    }
+        //    return result;
+            
+        //}
         public bool RatingProduct(int productId, string userId, int rate)
         {
             SqlConnection cnn = DBUtils.GetConnection();
