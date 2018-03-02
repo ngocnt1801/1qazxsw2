@@ -30,16 +30,16 @@ namespace snkrshop.Controllers
 
         [Route("product/add")]
         [HttpPost]
-        public string AddProduct(string name, string brand, float price, string country, string description, string material, int categoryId, int quantity)
+        public string AddProduct(string name, string brand, float price, string country, string description, string material, int categoryId, int quantity,string tag)
         {
-            return this.productService.AddProduct(name, brand, price, country, description, material, categoryId, quantity);
+            return this.productService.AddProduct(name, brand, price, country, description, material, categoryId, quantity,tag);
         }
 
         [Route("product/update")]
         [HttpPost]
-        public string Update(int id, string name, string brand, float price, string country, string description, string material, int categoryId, int quantity)
+        public string Update(int id, string name, string brand, float price, string country, string description, string material, int categoryId, int quantity,string tag)
         {
-            return this.productService.UpdateProduct(id, name, brand, price, country, description, material, categoryId, quantity);
+            return this.productService.UpdateProduct(id, name, brand, price, country, description, material, categoryId, quantity,tag);
         }
 
         [Route("product/{productId}")]
@@ -49,11 +49,6 @@ namespace snkrshop.Controllers
             return this.productService.GetProdctDetail(productId);
         }
 
-        [Route("product")]
-        [HttpGet]
-        public List<User_Product_Item> GetListProductSortByDiscount()
-        {
-            return this.productService.GetAllListProduct();
-        }
+    
     }
 }

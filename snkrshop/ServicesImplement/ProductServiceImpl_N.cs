@@ -29,12 +29,12 @@ namespace snkrshop.ServicesImplement
 
         }
 
-        public string AddProduct(string name, string brand, float price, string country, string description, string material, int categoryId, int quantity)
+        public string AddProduct(string name, string brand, float price, string country, string description, string material, int categoryId, int quantity, string tag)
         {
             string result = FAIL;
             try
             {
-                if (productRepository.AddProduct(name, brand, price, country, description, material, categoryId, quantity))
+                if (productRepository.AddProduct(name, brand, price, country, description, material, categoryId, quantity,tag))
                 {
                     result = SUCCESS;
                 }
@@ -108,12 +108,12 @@ namespace snkrshop.ServicesImplement
             }
         }
 
-        public string UpdateProduct(int id, string name, string brand, float price, string country, string description, string material, int categoryId, int quantity)
+        public string UpdateProduct(int id, string name, string brand, float price, string country, string description, string material, int categoryId, int quantity,string tag)
         {
             string result = FAIL;
             try
             {
-                if (productRepository.UpdateProduct(id, name, brand, price, country, description, material, categoryId, quantity))
+                if (productRepository.UpdateProduct(id, name, brand, price, country, description, material, categoryId, quantity,tag))
                 {
                     result = SUCCESS;
                 }

@@ -12,6 +12,7 @@ namespace snkrshop.Utilities
         public static SqlConnection GetConnection()
         {
             string strConnection = ConfigurationManager.ConnectionStrings["SnkrDB"].ConnectionString;
+            Console.WriteLine("Connection string:" + strConnection);
             return new SqlConnection(strConnection);
         }
     }

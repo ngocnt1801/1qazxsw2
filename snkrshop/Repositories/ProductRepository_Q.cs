@@ -10,10 +10,10 @@ namespace snkrshop.Repositories
 {
     partial interface ProductRepository
     {
-        List<Product> GetListProduct( int sortByPrice, int sortById);
+        List<User_Product_Item> GetListProduct( int sortByPrice, int sortById);
         List<User_Product_Item> GetSearchProduct(string searchString);
         bool RatingProduct(int productId, string userId, int rate);
-        List<Product> GetProductByCategory(int categoryId);
+        List<User_Product_Item> GetProductByCategory(int categoryId);
         bool DeleteProduct(int productId);
         bool AddProductColor(int productId, string color);
     }

@@ -7,7 +7,7 @@
 ******7 thiếu load all deal (fixed)
 8.cannot found DeletePorductDeal (fixed) - missed add producedure to database (done deal)
 *******9 thiếu get all voucher (fixed)
-10.GetListProduct method using View ??? in ProductRepositotyImpl_Q
-11.Mistake in cast data to product in SearchProduct
+10.GetListProduct method using View ??? in ProductRepositotyImpl_Q (fixed)
+11.Mistake in cast data to product in SearchProduct -> use tag to search
 12.Change list of product load to user (fixed)
 13. getpost by postid take exception (fixed) -> get wrong collumn from database

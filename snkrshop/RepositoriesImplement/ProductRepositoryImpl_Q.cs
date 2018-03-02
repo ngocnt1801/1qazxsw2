@@ -12,13 +12,13 @@ namespace snkrshop.RepositoriesImplement
 {
     public partial class ProductRepositoryImpl : ProductRepository
     {
-        public List<Product> GetListProduct( int sortByPrice, int sortById)
+        public List<User_Product_Item> GetListProduct( int sortByPrice, int sortById)
         {
             SqlConnection cnn = DBUtils.GetConnection();
-            string sql = "View_AllProduct";
+            string sql = "GetAllProductForUser";
             SqlCommand cmd = new SqlCommand(sql, cnn);
             cmd.CommandType = CommandType.StoredProcedure;
-            List<Product> result = new List<Product>();
+            List<User_Product_Item> result = new List<User_Product_Item>();
             try
             {
                 if (cnn.State == ConnectionState.Closed)
@@ -28,10 +28,53 @@ namespace snkrshop.RepositoriesImplement
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
+                    int productId = (int)reader["productId"];
+                    string name = (string)reader["name"];
+                    
+                    double price = 0;
+                    try
+                    {
+                        price = (double)reader["price"];
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    
+                    
+                    int discount = 0;
+                    try
+                    {
+                        discount = (int)reader["discount"];
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+
+                    string url = "";
+                    try
+                    {
+                        url = (string)reader["url"];
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+
+                    bool type = false;
+                    try
+                    {
+                        type = (bool)reader["type"];
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    
                     result.Add(
-                            new Product((int)reader["productId"],(string)reader["name"], (string)reader["brand"], (double)reader["price"], (string)reader["brand"],
-                            (string)reader["country"], (string)reader["description"], (string)reader["material"], (int)reader["categoryID"], (int)reader["quantity"])
-                        );
+                            new User_Product_Item(productId, name, price, discount, url, type)
+                            );
                 }
                 result = sortList(result, sortByPrice, sortById);
 
@@ -54,9 +97,8 @@ namespace snkrshop.RepositoriesImplement
             SqlConnection cnn = DBUtils.GetConnection();
             string sql = "SearchProductByName";
             SqlCommand cmd = new SqlCommand(sql, cnn);
-            //cmd.Parameters.AddWithValue("@SearchValue", searchString);
-            SqlParameter param = cmd.Parameters.Add("@SearchValue", SqlDbType.NVarChar);
-            param.Value = searchString;
+            cmd.Parameters.AddWithValue("@SearchValue", "%"+searchString+"%");
+            
             
             cmd.CommandType = CommandType.StoredProcedure;
             List<User_Product_Item> result = new List<User_Product_Item>();
@@ -69,6 +111,7 @@ namespace snkrshop.RepositoriesImplement
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
+             //       string search = (string)reader["value"];
                     result.Add(
                             new User_Product_Item((int)reader["productId"],
                                                         (string)reader["name"],
@@ -126,14 +169,14 @@ namespace snkrshop.RepositoriesImplement
             }
             return result > 0;
         }
-        public List<Product> GetProductByCategory(int categoryId)
+        public List<User_Product_Item> GetProductByCategory(int categoryId)
         {
             SqlConnection cnn = DBUtils.GetConnection();
             string sql = "ProductListByCategory";
             SqlCommand cmd = new SqlCommand(sql, cnn);
             cmd.Parameters.AddWithValue("@CategoryId", categoryId);
             cmd.CommandType = CommandType.StoredProcedure;
-            List<Product> result = new List<Product>();
+            List<User_Product_Item> result = new List<User_Product_Item>();
             try
             {
                 if (cnn.State == ConnectionState.Closed)
@@ -143,10 +186,53 @@ namespace snkrshop.RepositoriesImplement
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
+                    int productId = (int)reader["productId"];
+                    string name = (string)reader["name"];
+
+                    double price = 0;
+                    try
+                    {
+                        price = (double)reader["price"];
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+
+
+                    int discount = 0;
+                    try
+                    {
+                        discount = (int)reader["discount"];
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+
+                    string url = "";
+                    try
+                    {
+                        url = (string)reader["url"];
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+
+                    bool type = false;
+                    try
+                    {
+                        type = (bool)reader["type"];
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+
                     result.Add(
-                            new Product((int)reader["productId"], (string)reader["name"], (string)reader["brand"], (double)reader["price"], (string)reader["brand"],
-                            (string)reader["country"], (string)reader["description"], (string)reader["material"], (int)reader["categoryID"], (int)reader["quantity"])
-                        );
+                            new User_Product_Item(productId, name, price, discount, url, type)
+                            );
                 }
 
             }
@@ -225,9 +311,9 @@ namespace snkrshop.RepositoriesImplement
             return result > 0;
         }
 
-        private List<Product> sortList(List<Product> list, int sortByPrice, int sortById)
+        private List<User_Product_Item> sortList(List<User_Product_Item> list, int sortByPrice, int sortById)
         {
-            List<Product> sortedList = new List<Product>();
+            List<User_Product_Item> sortedList = new List<User_Product_Item>();
             //sort by Id
             if (sortById >= 1)
             {

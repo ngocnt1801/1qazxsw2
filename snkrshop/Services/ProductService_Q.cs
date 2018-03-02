@@ -9,10 +9,10 @@ namespace snkrshop.Services
 {
     partial interface ProductService
     {
-        List<Product> GetListProduct(int sortByPrice, int sortById);
+        List<User_Product_Item> GetListProduct(int sortByPrice, int sortById);
         List<User_Product_Item> GetSearchProduct(string searchString);
         string RatingProduct(int productId, string userId, int rate);
-        List<Product> GetProductByCategory(int categoryId);
+        List<User_Product_Item> GetProductByCategory(int categoryId);
         string DeleteProduct(int productId);
         string AddProductColor(int productId, string color);
     }

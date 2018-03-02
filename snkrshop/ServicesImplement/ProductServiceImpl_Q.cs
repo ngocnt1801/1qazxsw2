@@ -10,9 +10,9 @@ namespace snkrshop.ServicesImplement
 {
     public partial class ProductServiceImpl : ProductService
     {
-        public List<Product> GetListProduct(int sortByPrice, int sortById)
+        public List<User_Product_Item> GetListProduct(int sortByPrice, int sortById)
         {
-            List<Product> result = null;
+            List<User_Product_Item> result = null;
             try
             {
                 result = productRepository.GetListProduct(sortByPrice, sortById);
@@ -55,9 +55,9 @@ namespace snkrshop.ServicesImplement
             }
             return result;
         }
-        public List<Product> GetProductByCategory(int categoryId)
+        public List<User_Product_Item> GetProductByCategory(int categoryId)
         {
-            List<Product> result = null;
+            List<User_Product_Item> result = null;
             try
             {
                 result = productRepository.GetProductByCategory(categoryId);

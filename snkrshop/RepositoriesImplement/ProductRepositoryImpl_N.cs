@@ -12,7 +12,7 @@ namespace snkrshop.RepositoriesImplement
 {
     public partial class ProductRepositoryImpl : ProductRepository
     {
-        public bool AddProduct(string name, string brand, float price, string country, string description, string material, int categoryId, int quantity)
+        public bool AddProduct(string name, string brand, float price, string country, string description, string material, int categoryId, int quantity,string tag)
         {
             SqlConnection cnn = DBUtils.GetConnection();
             string sql = "AddProduct";
@@ -25,6 +25,8 @@ namespace snkrshop.RepositoriesImplement
             cmd.Parameters.AddWithValue("@Material", material);
             cmd.Parameters.AddWithValue("@CategoryId", categoryId);
             cmd.Parameters.AddWithValue("@Quantity", quantity);
+            cmd.Parameters.AddWithValue("@Tag", tag);
+
 
             cmd.CommandType = CommandType.StoredProcedure;
             int result;
@@ -101,7 +103,7 @@ namespace snkrshop.RepositoriesImplement
             return null;
         }
         
-        public bool UpdateProduct(int id, string name, string brand, float price, string country, string description, string material, int categoryId, int quantity)
+        public bool UpdateProduct(int id, string name, string brand, float price, string country, string description, string material, int categoryId, int quantity, string tag)
         {
             SqlConnection cnn = DBUtils.GetConnection();
             string sql = "UpdateProduct";
@@ -115,6 +117,8 @@ namespace snkrshop.RepositoriesImplement
             cmd.Parameters.AddWithValue("@Material", material);
             cmd.Parameters.AddWithValue("@CategoryId", categoryId);
             cmd.Parameters.AddWithValue("@Quantity", quantity);
+            cmd.Parameters.AddWithValue("@Tag", tag);
+
 
             cmd.CommandType = CommandType.StoredProcedure;
             int result;

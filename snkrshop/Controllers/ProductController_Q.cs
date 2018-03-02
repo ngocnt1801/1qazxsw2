@@ -9,9 +9,9 @@ namespace snkrshop.Controllers
 {
     public partial class ProductController : ApiController
     {
-        [Route("product/all")]
+        [Route("product")]
         [HttpGet]
-        public List<Product> GetListProduct(int sortByPrice, int sortById)
+        public List<User_Product_Item> GetListProduct(int sortByPrice, int sortById)
         {
             return productService.GetListProduct(sortByPrice, sortById);
         }
@@ -29,7 +29,7 @@ namespace snkrshop.Controllers
         }
         [Route("product/get/category")]
         [HttpGet]
-        public List<Product> GetProductByCategory(int categoryId)
+        public List<User_Product_Item> GetProductByCategory(int categoryId)
         {
             return productService.GetProductByCategory(categoryId);
         }

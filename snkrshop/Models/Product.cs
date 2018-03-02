@@ -29,6 +29,8 @@ namespace snkrshop.Models
         public int CategoryId { get; set; }
         [DataMember]
         public int Quantity { get; set; }
+        [DataMember]
+        public string Tag { get; set; }
 
         public Product(int productId, string name, string brand, double price, string size, string country, string description, string material, int categoryId, int quantity)
         {
@@ -42,6 +44,11 @@ namespace snkrshop.Models
             Material = material;
             CategoryId = categoryId;
             Quantity = quantity;
+        }
+
+        public Product(int productId, string name, string brand, double price, string size, string country, string description, string material, int categoryId, int quantity, string tag) : this(productId, name, brand, price, size, country, description, material, categoryId, quantity)
+        {
+            Tag = tag;
         }
     }
 }
