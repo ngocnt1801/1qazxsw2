@@ -1,9 +1,7 @@
-﻿using snkrshop.Models;
+﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 
@@ -13,32 +11,36 @@ namespace snkrshop.Controllers
     {
         [Route("user/login")]
         [HttpPost]
-        [AcceptVerbs("POST")]
-        public int LoginUser(LoginForm loginForm)
+        public int LoginUser(JObject jsonData)
         {
-            return userService.LoginUser(loginForm.Username, loginForm.Password);
+            dynamic json = jsonData;
+            string username = json.username;
+            string password = json.password;
+            return userService.LoginUser(username, password);
         }
-
-        [Route("user/test")]
-        [HttpPost]
-        [AcceptVerbs("POST")]
-        public HttpResponseMessage Test(String id)
-        {
-            return Request.CreateResponse<String>(HttpStatusCode.OK,"thanh cong " + id);
-        }
-
-        [Route("user/abc")]
-        [HttpGet]
-        public HttpResponseMessage Test2(String id)
-        {
-            return Request.CreateResponse<String>(HttpStatusCode.OK, "thanh cong " + id);
-        }
-
         [Route("user/set/role")]
         [HttpPost]
         public string SetRole(string username, int role)
         {
             return userService.SetRole(username, role);
         }
+        [Route("user/test")]
+        [HttpPost]
+        //[AcceptVerbs("POST")]
+        public string Test(JObject jsonData)
+        {
+            dynamic json = jsonData;
+            string username = json.username;
+            return "thanh cong roi " + username.Length  +"!!!";
+        }
+
+        [Route("user/test2")]
+        [HttpGet]
+        public string Test2(String id)
+        {
+            return "thanh cong " + id;
+
+        }
+
     }
 }
